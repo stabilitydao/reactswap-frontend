@@ -1,8 +1,8 @@
-import { ChainId, Token } from '@pancakeswap/sdk'
+import { ChainId, Token } from '@reactswap/sdk'
 import { serializeToken } from 'state/user/hooks/helpers'
 import { SerializedToken } from './types'
 
-const { MAINNET, TESTNET } = ChainId
+const { MAINNET, TESTNET, ROPSTEN } = ChainId
 
 interface TokenList {
   [symbol: string]: Token
@@ -11,7 +11,34 @@ interface TokenList {
 const defineTokens = <T extends TokenList>(t: T) => t
 
 export const mainnetTokens = defineTokens({
-  wbnb: new Token(
+  react: new Token(
+    MAINNET,
+    '0x2280EC541a667bC94F86ca18e6F7179D56b058A6', // not deployed yet
+    18,
+    'REACT',
+    'ReactSwap',
+    // 'https://reactswap.com',
+  ),
+  syrup: new Token(
+    MAINNET,
+    '0x009cF7bC57584b7998236eff51b98A168DceA9B0',
+    18,
+    'SYRUP',
+    'SyrupBar Token',
+    'https://pancakeswap.finance/',
+  ),
+  weth: new Token(
+    MAINNET,
+    '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    18,
+    'WETH',
+    'Wrapped ETH',
+    // 'https://www.binance.com/',
+  ),
+  // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
+  eth: new Token(MAINNET, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', 18, 'ETH', 'ETH', ''),
+
+  /* wbnb: new Token(
     MAINNET,
     '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
     18,
@@ -19,16 +46,8 @@ export const mainnetTokens = defineTokens({
     'Wrapped BNB',
     'https://www.binance.com/',
   ),
-  // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
-  bnb: new Token(MAINNET, '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c', 18, 'BNB', 'BNB', 'https://www.binance.com/'),
-  cake: new Token(
-    MAINNET,
-    '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
-    18,
-    'CAKE',
-    'PancakeSwap Token',
-    'https://pancakeswap.finance/',
-  ),
+
+
   tlos: new Token(MAINNET, '0xb6C53431608E626AC81a9776ac3e999c5556717c', 18, 'TLOS', 'Telos', 'https://www.telos.net/'),
   beta: new Token(
     MAINNET,
@@ -209,14 +228,7 @@ export const mainnetTokens = defineTokens({
     'Blink Token',
     'https://blink.wink.org',
   ),
-  syrup: new Token(
-    MAINNET,
-    '0x009cF7bC57584b7998236eff51b98A168DceA9B0',
-    18,
-    'SYRUP',
-    'SyrupBar Token',
-    'https://pancakeswap.finance/',
-  ),
+
   pha: new Token(
     MAINNET,
     '0x0112e557d400474717056C4e6D40eDD846F38351',
@@ -1949,25 +1961,33 @@ export const mainnetTokens = defineTokens({
     'APX',
     'ApolloX Token',
     'https://www.apollox.finance/',
+  ),*/
+  profit: new Token(
+    MAINNET,
+    '0x29E4d6c08e3AD060Dc2fC8DCE70AaB8C8c57563F',
+    18,
+    'PROFIT',
+    'Stability',
+    'https://stabilitydao.org/',
   ),
 } as const)
 
 export const testnetTokens = defineTokens({
-  wbnb: new Token(
-    TESTNET,
-    '0x094616F0BdFB0b526bD735Bf66Eca0Ad254ca81F',
+  weth: new Token(
+    ROPSTEN,
+    '0x0a180a76e4466bf68a7f86fb029bed3cccfaaac5',
     18,
-    'WBNB',
-    'Wrapped BNB',
-    'https://www.binance.com/',
+    'WETH',
+    'Wrapped ETH',
+    // 'https://www.binance.com/',
   ),
-  cake: new Token(
-    TESTNET,
-    '0xa35062141Fa33BCA92Ce69FeD37D0E8908868AAe',
+  react: new Token(
+    ROPSTEN,
+    '0x2280EC541a667bC94F86ca18e6F7179D56b058A6',
     18,
-    'CAKE',
-    'PancakeSwap Token',
-    'https://pancakeswap.finance/',
+    'REACT',
+    'ReactSwap',
+    // 'https://pancakeswap.finance/',
   ),
   busd: new Token(
     TESTNET,
@@ -1985,14 +2005,15 @@ export const testnetTokens = defineTokens({
     'SyrupBar Token',
     'https://pancakeswap.finance/',
   ),
-  bake: new Token(
+  profit: new Token(
     TESTNET,
-    '0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5',
+    '0x29E4d6c08e3AD060Dc2fC8DCE70AaB8C8c57563F',
     18,
-    'BAKE',
-    'Bakeryswap Token',
-    'https://www.bakeryswap.org/',
+    'PROFIT',
+    'Stability',
+    'https://stabilitydao.org/',
   ),
+
 } as const)
 
 const tokens = () => {

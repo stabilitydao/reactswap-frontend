@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text } from '@pancakeswap/uikit'
+import { Text } from '@reactswap/uikit'
 import { ContextApi } from 'contexts/Localization/types'
 import Link from 'next/link'
 

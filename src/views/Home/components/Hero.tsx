@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { NextLinkFromReactRouter } from 'components/NextLink'
-import { Flex, Heading, Button } from '@pancakeswap/uikit'
+import { Flex, Heading, Button } from '@reactswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -107,7 +107,7 @@ const Hero = () => {
       >
         <Flex flex="1" flexDirection="column">
           <Heading scale="xxl" color="secondary" mb="24px">
-            {t('The moon is made of pancakes.')}
+            {t('ReactSwap')}
           </Heading>
           <Heading scale="md" mb="24px">
             {t('Trade, earn, and win crypto on the most popular decentralized platform in the galaxy.')}
@@ -128,9 +128,10 @@ const Hero = () => {
         >
           <BunnyWrapper>
             <picture>
-              <source type="image/webp" srcSet={getSrcSet(imagePath, imageSrc, '.webp')} />
-              <source type="image/png" srcSet={getSrcSet(imagePath, imageSrc)} />
-              <img src={`${imagePath}${imageSrc}.png`} alt={t('Lunar bunny')} />
+              {/*<source type="image/webp" srcSet={getSrcSet(imagePath, imageSrc, '.webp')} />*/}
+              {/*<source type="image/png" srcSet={getSrcSet(imagePath, imageSrc)} />*/}
+              {/*<img src={`${imagePath}${imageSrc}.png`} alt={t('Lunar bunny')} />*/}
+              <img src="/logo.png" alt={t('Lunar bunny')} />
             </picture>
           </BunnyWrapper>
           <StarsWrapper>

@@ -1,16 +1,16 @@
-import { Token } from '@pancakeswap/sdk'
-import tokens from 'config/constants/tokens'
+import { Token } from '@reactswap/sdk'
+// import tokens from 'config/constants/tokens'
 
-const { bondly, safemoon, itam } = tokens
+// const { bondly, safemoon, itam } = tokens
 
 interface WarningTokenList {
   [key: string]: Token
 }
 
 const SwapWarningTokens = <WarningTokenList>{
-  safemoon,
-  bondly,
-  itam,
+  // safemoon,
+  // bondly,
+  // itam,
 }
 
 export default SwapWarningTokens

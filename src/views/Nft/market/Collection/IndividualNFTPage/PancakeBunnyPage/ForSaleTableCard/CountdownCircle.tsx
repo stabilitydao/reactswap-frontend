@@ -1,4 +1,4 @@
-import { Spinner, Text } from '@pancakeswap/uikit'
+import { Spinner, Text } from '@reactswap/uikit'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 

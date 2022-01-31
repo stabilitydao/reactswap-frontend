@@ -2,6 +2,7 @@ import { serializeTokens } from './tokens'
 import { SerializedFarmConfig } from './types'
 
 const serializedTokens = serializeTokens()
+// console.log(serializedTokens)
 
 const farms: SerializedFarmConfig[] = [
   /**
@@ -9,15 +10,15 @@ const farms: SerializedFarmConfig[] = [
    */
   {
     pid: 0,
-    lpSymbol: 'CAKE',
+    lpSymbol: 'REACT',
     lpAddresses: {
-      97: '0x9C21123D94b93361a29B2C2EFB3d5CD8B17e0A9e',
-      56: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
+      3: '0x2280EC541a667bC94F86ca18e6F7179D56b058A6', // react
+      // 56: '',
     },
     token: serializedTokens.syrup,
-    quoteToken: serializedTokens.wbnb,
+    quoteToken: serializedTokens.weth,
   },
-  {
+  /* {
     pid: 251,
     lpSymbol: 'CAKE-BNB LP',
     lpAddresses: {
@@ -26,8 +27,8 @@ const farms: SerializedFarmConfig[] = [
     },
     token: serializedTokens.cake,
     quoteToken: serializedTokens.wbnb,
-  },
-  {
+  }, */
+/*  {
     pid: 252,
     lpSymbol: 'BUSD-BNB LP',
     lpAddresses: {
@@ -36,11 +37,11 @@ const farms: SerializedFarmConfig[] = [
     },
     token: serializedTokens.busd,
     quoteToken: serializedTokens.wbnb,
-  },
+  }, */
   /**
    * V3 by order of release (some may be out of PID order due to multiplier boost)
    */
-  {
+  /**  {
     pid: 503,
     lpSymbol: 'FROYO-BNB LP',
     lpAddresses: {
@@ -2554,9 +2555,9 @@ const farms: SerializedFarmConfig[] = [
     token: serializedTokens.ada,
     quoteToken: serializedTokens.wbnb,
   },
-  /**
+  /!**
    * V2 farms, set to be removed once unstaked
-   */
+   *!/
   {
     pid: 139,
     lpSymbol: 'CAKE-BNB LP',
@@ -3677,9 +3678,9 @@ const farms: SerializedFarmConfig[] = [
     token: serializedTokens.busd,
     quoteToken: serializedTokens.wbnb,
   },
-  /**
+  /!**
    * All farms below here are from v1 and are to be set to 0x
-   */
+   *!/
   {
     pid: 1,
     lpSymbol: 'CAKE-BNB LP',
@@ -4983,7 +4984,7 @@ const farms: SerializedFarmConfig[] = [
     },
     token: serializedTokens.bake,
     quoteToken: serializedTokens.wbnb,
-  },
+  }, */
 ]
 
 export default farms

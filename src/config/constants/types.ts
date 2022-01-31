@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js'
-import { Token } from '@pancakeswap/sdk'
+// import { Token } from '@reactswap/sdk'
+import { Token } from '@reactswap/sdk'
 
 export type TranslatableText =
   | string
@@ -10,8 +11,8 @@ export type TranslatableText =
       }
     }
 export interface Address {
-  97?: string
-  56: string
+  3?: string
+  // 137: string
 }
 
 export interface SerializedToken {

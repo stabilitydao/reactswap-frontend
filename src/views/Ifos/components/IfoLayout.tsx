@@ -1,4 +1,4 @@
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@reactswap/uikit'
 import styled from 'styled-components'
 
 const IfoLayout = styled(Box)`

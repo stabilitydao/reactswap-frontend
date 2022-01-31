@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useModal } from '@pancakeswap/uikit'
+import { useModal } from '@reactswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { getAnniversaryAchievementContract } from 'utils/contractHelpers'
 import AnniversaryAchievementModal from './AnniversaryAchievementModal'
@@ -31,7 +31,8 @@ const GlobalCheckClaimStatus: React.FC<GlobalCheckClaimStatusProps> = ({ exclude
     }
 
     if (account) {
-      fetchClaimAnniversaryStatus()
+      // tmp
+      // fetchClaimAnniversaryStatus()
     }
   }, [account])
 

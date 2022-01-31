@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { CurrencyAmount, JSBI, Token, Trade } from '@pancakeswap/sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from '@reactswap/sdk'
 import {
   Button,
   Text,
@@ -12,7 +12,7 @@ import {
   BottomDrawer,
   useMatchBreakpoints,
   ArrowUpDownIcon,
-} from '@pancakeswap/uikit'
+} from '@reactswap/uikit'
 import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
 import Footer from 'components/Menu/Footer'
@@ -275,6 +275,7 @@ export default function Swap() {
   const [onPresentSwapWarningModal] = useModal(<SwapWarningModal swapCurrency={swapWarningCurrency} />)
 
   const shouldShowSwapWarning = (swapCurrency) => {
+    // console.log(SwapWarningTokens)
     const isWarningToken = Object.entries(SwapWarningTokens).find((warningTokenConfig) => {
       const warningTokenData = warningTokenConfig[1]
       return swapCurrency.address === warningTokenData.address

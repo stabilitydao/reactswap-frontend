@@ -1,9 +1,9 @@
-import { Token, ChainId } from '@pancakeswap/sdk'
+import { Token, ChainId } from '@reactswap/sdk'
 import tokens from './tokens'
 import farms from './farms'
 import { Ifo } from './types'
 
-export const cakeBnbLpToken = new Token(ChainId.MAINNET, farms[1].lpAddresses[ChainId.MAINNET], 18, farms[1].lpSymbol)
+export const cakeBnbLpToken = null//= new Token(ChainId.MAINNET, farms[1].lpAddresses[ChainId.MAINNET], 18, farms[1].lpSymbol)
 
 const ifos: Ifo[] = [
   {
@@ -34,7 +34,7 @@ const ifos: Ifo[] = [
     twitterUrl: 'https://twitter.com/realfroyogames',
     description: `Froyo Games is a game publisher and decentralized GameFi platform, with a NFT Marketplace that integrates NFTs with their games.\n \n FROYO tokens can be used to buy NFTs and participate in Froyo games`,
   },
-  {
+/*  {
     id: 'dpt',
     address: '0x63914805A0864e9557eA3A5cC86cc1BA054ec64b',
     isActive: false,
@@ -385,7 +385,7 @@ const ifos: Ifo[] = [
     articleUrl: 'https://medium.com/pancakeswap/1-000-000-ifo-blink-joins-pancakeswap-15841800bdd8',
     tokenOfferingPrice: null,
     version: 1,
-  },
+  },*/
 ]
 
 export default ifos

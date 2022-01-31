@@ -1,5 +1,6 @@
-import { Currency, ETHER, Token } from '@pancakeswap/sdk'
-import { BinanceIcon } from '@pancakeswap/uikit'
+import { ETHER } from '@reactswap/sdk'
+import { Currency, Token } from '@reactswap/sdk'
+import { BinanceIcon } from '@reactswap/uikit'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import useHttpLocations from '../../hooks/useHttpLocations'
@@ -12,7 +13,7 @@ const StyledLogo = styled(Logo)<{ size: string }>`
   height: ${({ size }) => size};
 `
 
-export default function CurrencyLogo({
+export default function   CurrencyLogo({
   currency,
   size = '24px',
   style,
@@ -39,5 +40,6 @@ export default function CurrencyLogo({
     return <BinanceIcon width={size} style={style} />
   }
 
+  console.log(currency, srcs)
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
 }

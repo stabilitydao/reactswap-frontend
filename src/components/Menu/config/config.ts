@@ -1,4 +1,4 @@
-import { MenuItemsType, DropdownMenuItemType } from '@pancakeswap/uikit'
+import { MenuItemsType, DropdownMenuItemType } from '@reactswap/uikit'
 import { ContextApi } from 'contexts/Localization/types'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
 
@@ -25,6 +25,7 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     label: t('Earn'),
     href: '/farms',
     icon: 'Earn',
+    showItemsOnMobile: false,
     items: [
       {
         label: t('Farms'),
@@ -36,7 +37,8 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
       },
     ],
   },
-  {
+
+  /*{
     label: t('Win'),
     href: '/prediction',
     icon: 'Trophy',
@@ -113,7 +115,7 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
         type: DropdownMenuItemType.EXTERNAL_LINK,
       },
     ],
-  },
+  },*/
 ]
 
 export default config

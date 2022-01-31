@@ -1,4 +1,4 @@
-import { Card, CardBody, Flex, Heading, Image, ProfileAvatar } from '@pancakeswap/uikit'
+import { Card, CardBody, Flex, Heading, Image, ProfileAvatar } from '@reactswap/uikit'
 import React from 'react'
 import { NextLinkFromReactRouter } from 'components/NextLink'
 import styled, { css } from 'styled-components'

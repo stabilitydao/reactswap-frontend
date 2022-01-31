@@ -19,8 +19,8 @@ export const setupNetwork = async () => {
             chainId: `0x${chainId.toString(16)}`,
             chainName: 'Binance Smart Chain Mainnet',
             nativeCurrency: {
-              name: 'BNB',
-              symbol: 'bnb',
+              name: 'ETH',
+              symbol: 'eth',
               decimals: 18,
             },
             rpcUrls: nodes,

@@ -1,4 +1,4 @@
-import { Flex, lightColors } from '@pancakeswap/uikit'
+import { Flex, lightColors } from '@reactswap/uikit'
 import styled, { keyframes } from 'styled-components'
 
 const flyingAnim = () => keyframes`
