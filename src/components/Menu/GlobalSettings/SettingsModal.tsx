@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Text, PancakeToggle, Toggle, Flex, Modal, InjectedModalProps, ThemeSwitcher } from '@reactswap/uikit'
+import {
+  Text,
+  PancakeToggle,
+  Toggle,
+  Flex,
+  Row,
+  Modal,
+  Button,
+  InjectedModalProps,
+  ThemeSwitcher,
+} from '@reactswap/uikit'
 import {
   useAudioModeManager,
   useExpertModeManager,
@@ -14,6 +24,7 @@ import useTheme from 'hooks/useTheme'
 import QuestionHelper from '../../QuestionHelper'
 import TransactionSettings from './TransactionSettings'
 import ExpertModal from './ExpertModal'
+import ChangeNetworkModal from './ChangeNetworkModal'
 import GasSettings from './GasSettings'
 
 const ScrollableContainer = styled(Flex)`
@@ -26,6 +37,7 @@ const ScrollableContainer = styled(Flex)`
 
 const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
   const [showConfirmExpertModal, setShowConfirmExpertModal] = useState(false)
+  const [shownetworkChangeModal, setshownetworkChangeModal] = useState(false)
   const [showExpertModeAcknowledgement, setShowExpertModeAcknowledgement] = useUserExpertModeAcknowledgementShow()
   const [expertMode, toggleExpertMode] = useExpertModeManager()
   const [singleHopOnly, setSingleHopOnly] = useUserSingleHopOnly()
@@ -44,6 +56,22 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
         setShowExpertModeAcknowledgement={setShowExpertModeAcknowledgement}
       />
     )
+  }
+  if (shownetworkChangeModal) {
+    return (
+      <ChangeNetworkModal
+        setshownetworkChangeModal={setshownetworkChangeModal}
+        // onDismiss={onDismiss}
+        // setShowExpertModeAcknowledgement={setShowExpertModeAcknowledgement}
+      />
+    )
+  }
+  function handleChangeNetworkModal() {
+    if (shownetworkChangeModal) {
+      setshownetworkChangeModal(false)
+    } else {
+      setshownetworkChangeModal(true)
+    }
   }
 
   const handleExpertModeToggle = () => {
@@ -67,6 +95,12 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
     >
       <ScrollableContainer>
         <Flex pb="24px" flexDirection="column">
+          <Text bold textTransform="uppercase" fontSize="12px" color="secondary" mb="12px">
+            {t('Change Network')}
+          </Text>
+          <Button variant="secondary" width="100%" mb={12} onClick={handleChangeNetworkModal}>
+            {t('Change network')}
+          </Button>
           <Text bold textTransform="uppercase" fontSize="12px" color="secondary" mb="24px">
             {t('Global')}
           </Text>
