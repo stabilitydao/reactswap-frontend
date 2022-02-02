@@ -2,12 +2,12 @@
   {
     "inputs": [
       {
-        "internalType": "contract CakeToken",
-        "name": "_cake",
+        "internalType": "contract IERC20Mintable",
+        "name": "_react",
         "type": "address"
       },
       {
-        "internalType": "contract SyrupBar",
+        "internalType": "contract IERC20MintableBurnable",
         "name": "_syrup",
         "type": "address"
       },
@@ -18,12 +18,17 @@
       },
       {
         "internalType": "uint256",
-        "name": "_cakePerBlock",
+        "name": "_reactPerBlock",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
         "name": "_startBlock",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_bonusEndBlock",
         "type": "uint256"
       }
     ],
@@ -145,7 +150,7 @@
         "type": "uint256"
       },
       {
-        "internalType": "contract IBEP20",
+        "internalType": "contract IERC20",
         "name": "_lpToken",
         "type": "address"
       },
@@ -162,20 +167,7 @@
   },
   {
     "inputs": [],
-    "name": "cake",
-    "outputs": [
-      {
-        "internalType": "contract CakeToken",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "cakePerBlock",
+    "name": "bonusEndBlock",
     "outputs": [
       {
         "internalType": "uint256",
@@ -318,7 +310,7 @@
     "name": "migrator",
     "outputs": [
       {
-        "internalType": "contract IMigratorChef",
+        "internalType": "contract IMigrator",
         "name": "",
         "type": "address"
       }
@@ -352,7 +344,7 @@
         "type": "address"
       }
     ],
-    "name": "pendingCake",
+    "name": "pendingReact",
     "outputs": [
       {
         "internalType": "uint256",
@@ -374,7 +366,7 @@
     "name": "poolInfo",
     "outputs": [
       {
-        "internalType": "contract IBEP20",
+        "internalType": "contract IERC20",
         "name": "lpToken",
         "type": "address"
       },
@@ -390,7 +382,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "accCakePerShare",
+        "name": "accReactPerShare",
         "type": "uint256"
       }
     ],
@@ -400,6 +392,32 @@
   {
     "inputs": [],
     "name": "poolLength",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "react",
+    "outputs": [
+      {
+        "internalType": "contract IERC20Mintable",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "reactPerBlock",
     "outputs": [
       {
         "internalType": "uint256",
@@ -443,7 +461,7 @@
   {
     "inputs": [
       {
-        "internalType": "contract IMigratorChef",
+        "internalType": "contract IMigrator",
         "name": "_migrator",
         "type": "address"
       }
@@ -471,7 +489,7 @@
     "name": "syrup",
     "outputs": [
       {
-        "internalType": "contract SyrupBar",
+        "internalType": "contract IERC20MintableBurnable",
         "name": "",
         "type": "address"
       }
@@ -509,11 +527,11 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "multiplierNumber",
+        "name": "k",
         "type": "uint256"
       }
     ],
-    "name": "updateMultiplier",
+    "name": "updateBonusMultiplier",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -527,6 +545,19 @@
       }
     ],
     "name": "updatePool",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "divider",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateStakingPool",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

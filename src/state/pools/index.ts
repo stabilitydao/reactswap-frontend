@@ -109,7 +109,7 @@ export const fetchCakePoolUserDataAsync = (account: string) => async (dispatch) 
   const cakeContractCalls = [allowanceCall, balanceOfCall]
   const [[allowance], [stakingTokenBalance]] = await multicallv2(cakeAbi, cakeContractCalls)
 
-  const masterChefCalls = ['pendingCake', 'userInfo'].map((method) => ({
+  const masterChefCalls = ['pendingReact', 'userInfo'].map((method) => ({
     address: getMasterChefAddress(),
     name: method,
     params: ['0', account],

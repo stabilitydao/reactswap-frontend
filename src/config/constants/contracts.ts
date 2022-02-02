@@ -2,7 +2,7 @@ export default {
   masterChef: {
     97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
     56: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
-    3: '0x04A19E4e546A6606E28419cf21B98dD724fbF8Ea', // ok
+    3: '0x3EC9060E52b9B435Db7fDeC55CA33B8bcBaF2D2b', // ok
   },
   sousChef: {
     97: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',
@@ -22,7 +22,7 @@ export default {
   pancakeProfile: {
     56: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
     97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
-    3: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
+    3: '0xe10Ec5809683239F00916Cc5770a98817dE8Be0E', // ok
   },
   pancakeRabbits: {
     56: '0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07',
@@ -67,7 +67,7 @@ export default {
   cakeVault: {
     56: '0xa80240Eb5d7E05d3F250cF000eEc0891d00b51CC',
     97: '',
-    3: '0x1cE263b6cc448E7c356f29a253602a5E0395FcBd',
+    3: '0xD27fee7E1174f50fb63fb325af0475576ef8bD24',
   },
   ifoPool: {
     56: '0x1B2A2f6ed4A1401E8C73B4c2B6172455ce2f78E8',

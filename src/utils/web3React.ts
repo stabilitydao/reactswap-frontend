@@ -7,8 +7,8 @@ import { ethers } from 'ethers'
 import getNodeUrl from './getRpcUrl'
 
 const POLLING_INTERVAL = 12000
-const rpcUrl = getNodeUrl()
 const chainId = parseInt(process.env.NEXT_PUBLIC_CHAIN_ID, 10)
+const rpcUrl = getNodeUrl(chainId)
 
 const injected = new InjectedConnector({ supportedChainIds: [chainId] })
 

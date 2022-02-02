@@ -27,6 +27,7 @@ const HarvestCard = () => {
 
   const masterChefContract = useMasterchef()
   const cakePriceBusd = usePriceCakeBusd()
+  // console.log('HarvestCard cakePriceBusd', cakePriceBusd)
   const earningsBusd = new BigNumber(farmEarningsSum).multipliedBy(cakePriceBusd)
   const numTotalToCollect = farmsWithStakedBalance.length
   const numFarmsToCollect = farmsWithStakedBalance.filter((value) => value.pid !== 0).length
