@@ -108,6 +108,7 @@ export default function Swap() {
     () => [loadedInputCurrency, loadedOutputCurrency]?.filter((c): c is Token => c instanceof Token) ?? [],
     [loadedInputCurrency, loadedOutputCurrency],
   )
+  
 
   // dismiss warning if all imported tokens are in active lists
   const defaultTokens = useAllTokens()
