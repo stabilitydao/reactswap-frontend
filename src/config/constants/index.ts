@@ -1,7 +1,8 @@
 import { ChainId, JSBI, Percent, Token } from '@reactswap/sdk'
 import { mainnetTokens, testnetTokens } from './tokens'
 
-export const ROUTER_ADDRESS = '0x10ED43C718714eb63d5aA57B78B54704E256024E'
+// ropsten router
+export const ROUTER_ADDRESS = '0xE30184E3957E6f02d2C57ee4AFBe9A789222E586'
 
 // a list of tokens by chain
 type ChainTokenList = {
@@ -10,17 +11,23 @@ type ChainTokenList = {
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
-  [ChainId.MAINNET]: [
-    mainnetTokens.wbnb,
-    mainnetTokens.cake,
-    mainnetTokens.busd,
-    mainnetTokens.usdt,
-    mainnetTokens.btcb,
-    mainnetTokens.ust,
-    mainnetTokens.eth,
+  [ChainId.POLYGON]: [
+    mainnetTokens.weth,
+    mainnetTokens.react,
     mainnetTokens.usdc,
+    mainnetTokens.usdt,
+    mainnetTokens.dai,
+    mainnetTokens.wbtc,
+    mainnetTokens.eth,
+    mainnetTokens.wmatic,
   ],
-  [ChainId.TESTNET]: [testnetTokens.wbnb, testnetTokens.cake, testnetTokens.busd],
+  [ChainId.TESTNET]: [
+    testnetTokens.weth,
+    testnetTokens.react,
+    testnetTokens.usdc,
+    // testnetTokens.usdt,
+    // testnetTokens.dai,
+  ],
 }
 
 /**
@@ -42,21 +49,26 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
-  [ChainId.MAINNET]: [mainnetTokens.busd, mainnetTokens.cake, mainnetTokens.btcb],
-  [ChainId.TESTNET]: [testnetTokens.wbnb, testnetTokens.cake, testnetTokens.busd],
+  [ChainId.POLYGON]: [mainnetTokens.weth, mainnetTokens.react, mainnetTokens.usdc],
+  [ChainId.ROPSTEN]: [testnetTokens.weth, testnetTokens.react, testnetTokens.usdc],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
-  [ChainId.MAINNET]: [mainnetTokens.weth, mainnetTokens.react, mainnetTokens.busd, mainnetTokens.usdt],
-  [ChainId.TESTNET]: [testnetTokens.weth, testnetTokens.react, testnetTokens.busd],
+  [ChainId.POLYGON]: [mainnetTokens.weth, mainnetTokens.react, mainnetTokens.usdc, mainnetTokens.usdt],
+  [ChainId.ROPSTEN]: [testnetTokens.weth, testnetTokens.react, testnetTokens.usdc, testnetTokens.profit],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
-  [ChainId.MAINNET]: [
-    [mainnetTokens.cake, mainnetTokens.wbnb],
-    [mainnetTokens.busd, mainnetTokens.usdt],
-    [mainnetTokens.dai, mainnetTokens.usdt],
+  [ChainId.POLYGON]: [
+    [mainnetTokens.react, mainnetTokens.weth],
+    [mainnetTokens.react, mainnetTokens.wmatic],
+    [mainnetTokens.react, mainnetTokens.usdc],
+  ],
+  [ChainId.ROPSTEN]: [
+    [testnetTokens.react, testnetTokens.weth],
+    // [testnetTokens.react, testnetTokens.wmatic],
+    [testnetTokens.react, testnetTokens.usdc],
   ],
 }
 
@@ -89,13 +101,7 @@ export const ZERO_PERCENT = new Percent('0')
 export const ONE_HUNDRED_PERCENT = new Percent('1')
 
 // SDN OFAC addresses
-export const BLOCKED_ADDRESSES: string[] = [
-  '0x7F367cC41522cE07553e823bf3be79A889DEbe1B',
-  '0xd882cFc20F52f2599D84b8e8D58C7FB62cfE344b',
-  '0x901bb9583b24D97e995513C6778dc6888AB6870e',
-  '0xA7e5d5A720f06526557c513402f2e6B5fA20b008',
-  '0x8576aCC5C05D6Ce88f4e49bf65BdF0C62F91353C',
-]
+export const BLOCKED_ADDRESSES: string[] = []
 
 export { default as farmsConfig } from './farms'
 export { default as poolsConfig } from './pools'
