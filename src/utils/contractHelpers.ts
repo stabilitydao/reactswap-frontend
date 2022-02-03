@@ -110,7 +110,7 @@ import {
 
 const getContract = (abi: any, address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
   const signerOrProvider = signer ?? simpleRpcProvider
-  console.log('getContract address ', address )
+  // console.log('getContract address ', address )
   return new ethers.Contract(address, abi, signerOrProvider)
 }
 

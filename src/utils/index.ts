@@ -95,6 +95,7 @@ export function getContract(address: string, ABI: any, signer?: ethers.Signer | 
 
 // account is optional
 export function getRouterContract(_: number, library: Web3Provider, account?: string): Contract {
+  // todo router for chainid
   return getContract(ROUTER_ADDRESS, IUniswapV2Router02ABI, getProviderOrSigner(library, account))
 }
 

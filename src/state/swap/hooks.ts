@@ -176,7 +176,7 @@ export function useDerivedSwapInfo(): {
     recipient,
   } = useSwapState()
 
-  console.log('useDerivedSwapInfo() inputCurrencyId', inputCurrencyId)
+  // console.log('useDerivedSwapInfo() inputCurrencyId', inputCurrencyId)
 
   const inputCurrency = useCurrency(inputCurrencyId)
   const outputCurrency = useCurrency(outputCurrencyId)
