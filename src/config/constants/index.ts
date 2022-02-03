@@ -2,7 +2,7 @@ import { ChainId, JSBI, Percent, Token } from '@reactswap/sdk'
 import { mainnetTokens, testnetTokens } from './tokens'
 
 // ropsten router
-export const ROUTER_ADDRESS = '0x07A7d038EB2DC9aCCeeFBDf28cBef21Df68b1616'
+export const ROUTER_ADDRESS = '0xE30184E3957E6f02d2C57ee4AFBe9A789222E586'
 
 // a list of tokens by chain
 type ChainTokenList = {
@@ -24,9 +24,9 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.TESTNET]: [
     testnetTokens.weth,
     testnetTokens.react,
-    mainnetTokens.usdc,
-    mainnetTokens.usdt,
-    mainnetTokens.dai,
+    testnetTokens.usdc,
+    // testnetTokens.usdt,
+    // testnetTokens.dai,
   ],
 }
 
@@ -56,7 +56,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.POLYGON]: [mainnetTokens.weth, mainnetTokens.react, mainnetTokens.usdc, mainnetTokens.usdt],
-  [ChainId.ROPSTEN]: [testnetTokens.weth, testnetTokens.react, testnetTokens.usdc, mainnetTokens.usdt],
+  [ChainId.ROPSTEN]: [testnetTokens.weth, testnetTokens.react, testnetTokens.usdc, testnetTokens.profit],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -66,9 +66,9 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [mainnetTokens.react, mainnetTokens.usdc],
   ],
   [ChainId.ROPSTEN]: [
-    [mainnetTokens.react, mainnetTokens.weth],
-    [mainnetTokens.react, mainnetTokens.wmatic],
-    [mainnetTokens.react, mainnetTokens.usdc],
+    [testnetTokens.react, testnetTokens.weth],
+    // [testnetTokens.react, testnetTokens.wmatic],
+    [testnetTokens.react, testnetTokens.usdc],
   ],
 }
 

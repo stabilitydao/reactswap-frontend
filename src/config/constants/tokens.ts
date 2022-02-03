@@ -122,7 +122,7 @@ export const testnetTokens = defineTokens({
     'https://reactswap.com',
   ),
   profit: new Token(
-    TESTNET,
+    ROPSTEN,
     '0x29E4d6c08e3AD060Dc2fC8DCE70AaB8C8c57563F',
     18,
     'PROFIT',
