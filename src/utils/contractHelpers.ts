@@ -32,6 +32,8 @@ import {
   getPancakeSquadAddress,
   getTradingCompetitionAddressV2,
   getBunnySpecialXmasAddress,
+  getXStakeAddress,
+  getReactTokenAddress,
 } from 'utils/addressHelpers'
 
 // ABI
@@ -70,6 +72,8 @@ import nftMarketAbi from 'config/abi/nftMarket.json'
 import nftSaleAbi from 'config/abi/nftSale.json'
 import pancakeSquadAbi from 'config/abi/pancakeSquad.json'
 import erc721CollectionAbi from 'config/abi/erc721collection.json'
+import xStakeAbi from 'config/abi/xstake.json'
+import ReactTokenAbi from 'config/abi/ReactToken.json'
 
 // Types
 import {
@@ -106,11 +110,13 @@ import {
   PancakeSquad,
   Erc721collection,
   PointCenterIfo,
+  Xstake,
+  ReactToken,
 } from 'config/abi/types'
 
 const getContract = (abi: any, address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
   const signerOrProvider = signer ?? simpleRpcProvider
-  console.log('getContract address ', address )
+  console.log('getContract address ', address)
   return new ethers.Contract(address, abi, signerOrProvider)
 }
 
@@ -221,4 +227,10 @@ export const getPancakeSquadContract = (signer?: ethers.Signer | ethers.provider
 }
 export const getErc721CollectionContract = (signer?: ethers.Signer | ethers.providers.Provider, address?: string) => {
   return getContract(erc721CollectionAbi, address, signer) as Erc721collection
+}
+export const getXStakeContract = (signer?: ethers.Signer | ethers.providers.Provider, address?: string) => {
+  return getContract(xStakeAbi, getXStakeAddress(), signer) as Xstake
+}
+export const getReactTokenContract = (signer?: ethers.Signer | ethers.providers.Provider, address?: string) => {
+  return getContract(ReactTokenAbi, getReactTokenAddress(), signer) as ReactToken
 }

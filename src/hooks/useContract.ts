@@ -33,6 +33,8 @@ import {
   getPancakeSquadContract,
   getErc721CollectionContract,
   getBunnySpecialXmasContract,
+  getXStakeContract,
+  getReactTokenContract,
 } from 'utils/contractHelpers'
 import { getMulticallAddress } from 'utils/addressHelpers'
 import { VaultKey } from 'state/types'
@@ -237,6 +239,16 @@ export const useFarmAuctionContract = (withSignerIfPossible = true) => {
     () => getFarmAuctionContract(withSignerIfPossible ? getProviderOrSigner(library, account) : null),
     [library, account, withSignerIfPossible],
   )
+}
+
+export const useXStakeContract = () => {
+  const { library } = useActiveWeb3React()
+  return useMemo(() => getXStakeContract(library.getSigner()), [library])
+}
+
+export const useReactTokenContract = () => {
+  const { library } = useActiveWeb3React()
+  return useMemo(() => getReactTokenContract(library.getSigner()), [library])
 }
 
 export const useNftMarketContract = () => {
