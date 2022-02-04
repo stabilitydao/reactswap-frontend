@@ -35,16 +35,8 @@
       "logoURI": "https://raw.githubusercontent.com/stabilitydao/app/main/public/profit.png"
     },
     {
-      "name": "Stability Dividend",
-      "address": "0x424E1eAe04a2580EcD4d5f19Ad5285cC2b05a05C",
-      "symbol": "SDIV",
-      "decimals": 18,
-      "chainId": 3,
-      "logoURI": "https://raw.githubusercontent.com/stabilitydao/app/main/public/SDIV200x200.png"
-    },
-    {
       "name": "Wrapped Ether",
-      "address": "0x0a180A76e4466bF68A7F86fB029BEd3cCcFaAac5",
+      "address": "0xc778417E063141139Fce010982780140Aa0cD5Ab",
       "symbol": "WETH",
       "decimals": 18,
       "chainId": 3,

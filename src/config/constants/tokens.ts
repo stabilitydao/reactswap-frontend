@@ -98,7 +98,14 @@ export const mainnetTokens = defineTokens({
 export const testnetTokens = defineTokens({
   weth: new Token(
     ROPSTEN,
-    '0x0a180A76e4466bF68A7F86fB029BEd3cCcFaAac5',
+    '0xc778417E063141139Fce010982780140Aa0cD5Ab',
+    18,
+    'WETH',
+    'Wrapped ETH',
+  ),
+  eth: new Token(
+    ROPSTEN,
+    '0xc778417E063141139Fce010982780140Aa0cD5Ab',
     18,
     'WETH',
     'Wrapped ETH',

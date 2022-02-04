@@ -12,19 +12,20 @@ type ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.POLYGON]: [
+    mainnetTokens.eth, // wmatic
     mainnetTokens.weth,
     mainnetTokens.react,
     mainnetTokens.usdc,
     mainnetTokens.usdt,
     mainnetTokens.dai,
     mainnetTokens.wbtc,
-    mainnetTokens.eth,
-    mainnetTokens.wmatic,
+    // mainnetTokens.wmatic,
   ],
   [ChainId.TESTNET]: [
-    testnetTokens.weth,
+    testnetTokens.eth,
     testnetTokens.react,
     testnetTokens.usdc,
+    testnetTokens.profit,
     // testnetTokens.usdt,
     // testnetTokens.dai,
   ],
@@ -56,7 +57,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.POLYGON]: [mainnetTokens.weth, mainnetTokens.react, mainnetTokens.usdc, mainnetTokens.usdt],
-  [ChainId.ROPSTEN]: [testnetTokens.weth, testnetTokens.react, testnetTokens.usdc, testnetTokens.profit],
+  [ChainId.ROPSTEN]: [ testnetTokens.react, testnetTokens.usdc, testnetTokens.profit],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
