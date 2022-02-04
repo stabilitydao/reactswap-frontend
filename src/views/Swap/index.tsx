@@ -93,7 +93,7 @@ export default function Swap() {
   const { isMobile } = useMatchBreakpoints()
   const [isChartExpanded, setIsChartExpanded] = useState(false)
   const [userChartPreference, setUserChartPreference] = useExchangeChartManager(isMobile)
-  const [isChartDisplayed, setIsChartDisplayed] = useState(userChartPreference)
+  const [isChartDisplayed, setIsChartDisplayed] = useState(false/* userChartPreference */)
 
   useEffect(() => {
     setUserChartPreference(isChartDisplayed)

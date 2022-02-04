@@ -11,7 +11,7 @@ const isUserRejected = (err) => {
   return typeof err === 'object' && 'code' in err && err.code === 4001
 }
 
-Sentry.init({
+/*Sentry.init({
   dsn: SENTRY_DSN || 'https://ed98e16b9d704c22bef92d24bdd5f3b7@o1092725.ingest.sentry.io/6111410',
   integrations: [
     new Sentry.Integrations.Breadcrumbs({
@@ -42,4 +42,4 @@ Sentry.init({
     'User rejected the transaction',
     'cancelled',
   ],
-})
+})*/

@@ -2,7 +2,7 @@ import { ChainId, Token } from '@reactswap/sdk'
 import { serializeToken } from 'state/user/hooks/helpers'
 import { SerializedToken } from './types'
 
-const { MAINNET, TESTNET, ROPSTEN, POLYGON } = ChainId
+const { /* MAINNET, TESTNET, */ ROPSTEN, POLYGON } = ChainId
 
 interface TokenList {
   [symbol: string]: Token
@@ -29,18 +29,25 @@ export const mainnetTokens = defineTokens({
   ),
   weth: new Token(
     POLYGON,
-    '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
     18,
     'WETH',
     'Wrapped ETH',
     'https://weth.io',
   ),
-  // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
-  eth: new Token(MAINNET, '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', 18, 'ETH', 'ETH', ''),
+  // eth here points to the weth contract. Wherever the currency ETH is required, conditional checks for the symbol 'ETH'/ can be used
+  eth: new Token(
+    POLYGON,
+    '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
+    18,
+    'WMATIC',
+    'Wrapped Matic',
+    'https://polygon.technology/',
+  ),
 
   wmatic: new Token(
     POLYGON,
-    '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
+    '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
     18,
     'WMATIC',
     'Wrapped Matic',
@@ -56,7 +63,7 @@ export const mainnetTokens = defineTokens({
   ),
   usdc: new Token(
     POLYGON,
-    '0x2791bca1f2de4661ed88a30c99a7a9449aa84174',
+    '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
     6,
     'USDC',
     'USD Coin',
@@ -64,7 +71,7 @@ export const mainnetTokens = defineTokens({
   ),
   usdt: new Token(
     POLYGON,
-    '0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
+    '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
     6,
     'USDT',
     'Tether USD',
@@ -72,7 +79,7 @@ export const mainnetTokens = defineTokens({
   ),
   wbtc: new Token(
     POLYGON,
-    '0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6',
+    '0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6',
     18,
     'WBTC',
     'Wrapped BTC',
@@ -80,7 +87,7 @@ export const mainnetTokens = defineTokens({
   ),
   profit: new Token(
     POLYGON,
-    '0x29E4d6c08e3AD060Dc2fC8DCE70AaB8C8c57563F',
+    '0x48469a0481254d5945E7E56c1Eb9861429c02f44',
     18,
     'PROFIT',
     'Stability',
@@ -91,11 +98,17 @@ export const mainnetTokens = defineTokens({
 export const testnetTokens = defineTokens({
   weth: new Token(
     ROPSTEN,
-    '0x0a180a76e4466bf68a7f86fb029bed3cccfaaac5',
+    '0xc778417E063141139Fce010982780140Aa0cD5Ab',
     18,
     'WETH',
     'Wrapped ETH',
-    // 'https://www.binance.com/',
+  ),
+  eth: new Token(
+    ROPSTEN,
+    '0xc778417E063141139Fce010982780140Aa0cD5Ab',
+    18,
+    'WETH',
+    'Wrapped ETH',
   ),
   react: new Token(
     ROPSTEN,
@@ -103,7 +116,7 @@ export const testnetTokens = defineTokens({
     18,
     'REACT',
     'ReactSwap',
-    // 'https://pancakeswap.finance/',
+    'https://reactswap/com',
   ),
   usdc: new Token(
     ROPSTEN,

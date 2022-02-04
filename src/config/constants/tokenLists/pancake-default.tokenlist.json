@@ -1,19 +1,19 @@
 {
-  "name": "PancakeSwap Default List",
-  "timestamp": "2021-05-06T00:00:00Z",
+  "name": "ReactSwap Default List",
+  "timestamp": "2021-12-06T00:00:00Z",
   "version": {
-    "major": 3,
+    "major": 1,
     "minor": 0,
     "patch": 0
   },
   "tags": {},
-  "logoURI": "https://pancakeswap.finance/logo.png",
-  "keywords": ["pancake", "default"],
+  "logoURI": "https://reactswap.com/logo.png",
+  "keywords": ["reactswap", "default"],
   "tokens": [
     {
       "name": "Tether USD",
       "symbol": "USDT",
-      "address": "0x6ee856ae55b6e1a249f04cd3b947141bc146273c",
+      "address": "0x6EE856Ae55B6E1A249f04cd3b947141bc146273c",
       "chainId": 3,
       "decimals": 18,
       "logoURI": "https://pancakeswap.finance/images/tokens/0x55d398326f99059ff775485246999027b3197955.png"
@@ -33,14 +33,6 @@
       "decimals": 18,
       "chainId": 3,
       "logoURI": "https://raw.githubusercontent.com/stabilitydao/app/main/public/profit.png"
-    },
-    {
-      "name": "Stability Dividend",
-      "address": "0x424E1eAe04a2580EcD4d5f19Ad5285cC2b05a05C",
-      "symbol": "SDIV",
-      "decimals": 18,
-      "chainId": 3,
-      "logoURI": "https://raw.githubusercontent.com/stabilitydao/app/main/public/SDIV200x200.png"
     },
     {
       "name": "Wrapped Ether",

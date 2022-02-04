@@ -1,4 +1,5 @@
 const getTokenLogoURL = (address: string) =>
-  `https://assets.trustwalletapp.com/blockchains/smartchain/assets/${address}/logo.png`
+  `/images/tokens/${address}.png`
+  // `https://assets.trustwalletapp.com/blockchains/smartchain/assets/${address}/logo.png`
 
 export default getTokenLogoURL
