@@ -17,6 +17,13 @@ const StakeInput = styled.input`
   background-color: transparent;
   padding: 4px 10px;
 `
+const UnStakeInput = styled.input`
+  outline: none;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 4px 10px;
+`
 const InputWrapper = styled.div`
   border-radius: 10px;
   padding: 10px;
@@ -60,40 +67,21 @@ const Voting = () => {
   const { toastSuccess, toastError } = useToast()
   const { callWithGasPrice } = useCallWithGasPrice()
   const { t } = useTranslation()
-  const { account, library, chainId } = useWeb3React()
+  const { account, active } = useWeb3React()
   const handleApprove = async () => {
-    try {
-      const tx = await callWithGasPrice(ReactTokenContract, 'approve', [
-        XStakeContract.address,
-        ethers.constants.MaxUint256,
-      ])
-      toastSuccess(`${t('Transaction Submitted')}!`, <ToastDescriptionWithTx txHash={tx.hash} />)
-      const receipt = await tx.wait()
-      if (receipt.status) {
-        toastSuccess(
-          t('Contract Enabled'),
-          <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-            {t('You can now stake in the %symbol% vault!', { symbol: 'React' })}
-          </ToastDescriptionWithTx>,
-        )
-      } else {
-        toastError(t('Error'), t('Please try again. Confirm the transaction and make sure you are paying enough gas!'))
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  const handleStake = async () => {
-    if (Stake) {
+    if (active) {
       try {
-        const tx = await callWithGasPrice(XStakeContract, 'enter', [ethers.utils.parseUnits(Stake, 'ether')])
+        const tx = await callWithGasPrice(ReactTokenContract, 'approve', [
+          XStakeContract.address,
+          ethers.constants.MaxUint256,
+        ])
         toastSuccess(`${t('Transaction Submitted')}!`, <ToastDescriptionWithTx txHash={tx.hash} />)
         const receipt = await tx.wait()
         if (receipt.status) {
           toastSuccess(
-            t('Staked'),
+            t('Contract Enabled'),
             <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-              {t('You have staked your %symbol% tokens', { symbol: 'React' })}
+              {t('You can now stake in the %symbol% vault!', { symbol: 'React' })}
             </ToastDescriptionWithTx>,
           )
         } else {
@@ -106,7 +94,61 @@ const Voting = () => {
         console.log(error)
       }
     } else {
-      toastError(t('Error'), t('Please try again. Your staking amount is zero'))
+      toastError(t('Error'), t('Please try again.'))
+    }
+  }
+  const handleUnstake = async () => {
+    if (UnStake && active) {
+      try {
+        const tx = await callWithGasPrice(XStakeContract, 'leave', [ethers.utils.parseUnits(UnStake, 'ether')])
+        toastSuccess(`${t('Transaction Submitted')}!`, <ToastDescriptionWithTx txHash={tx.hash} />)
+        const receipt = await tx.wait()
+        if (receipt.status) {
+          toastSuccess(
+            t('Unstaked'),
+            <ToastDescriptionWithTx txHash={receipt.transactionHash}>
+              {t('You have Unstaked your %symbol% tokens', { symbol: 'React' })}
+            </ToastDescriptionWithTx>,
+          )
+          setUnStake(null)
+        } else {
+          toastError(
+            t('Error'),
+            t('Please try again. Confirm the transaction and make sure you are paying enough gas!'),
+          )
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      toastError(t('Error'), t('Please try again.'))
+    }
+  }
+  const handleStake = async () => {
+    if (Stake && active) {
+      try {
+        const tx = await callWithGasPrice(XStakeContract, 'enter', [ethers.utils.parseUnits(Stake, 'ether')])
+        toastSuccess(`${t('Transaction Submitted')}!`, <ToastDescriptionWithTx txHash={tx.hash} />)
+        const receipt = await tx.wait()
+        if (receipt.status) {
+          toastSuccess(
+            t('Staked'),
+            <ToastDescriptionWithTx txHash={receipt.transactionHash}>
+              {t('You have staked your %symbol% tokens', { symbol: 'React' })}
+            </ToastDescriptionWithTx>,
+          )
+          setStake(null)
+        } else {
+          toastError(
+            t('Error'),
+            t('Please try again. Confirm the transaction and make sure you are paying enough gas!'),
+          )
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      toastError(t('Error'), t('Please try again.'))
     }
   }
   const handleisApproved = async () => {
@@ -123,7 +165,7 @@ const Voting = () => {
   }
   useEffect(() => {
     handleisApproved()
-  }, [])
+  })
 
   return (
     <>
@@ -202,7 +244,7 @@ const Voting = () => {
               ) : (
                 <Flex mb="15px" flexDirection="column" width="100%" padding="2px">
                   <InputWrapper>
-                    <StakeInput
+                    <UnStakeInput
                       type="number"
                       placeholder="xReact"
                       onChange={(e) => {
@@ -211,7 +253,7 @@ const Voting = () => {
                     />
                     <StakeMax>Max</StakeMax>
                   </InputWrapper>
-                  <Button>Unstake</Button>
+                  <Button onClick={handleUnstake}>Unstake</Button>
                 </Flex>
               )}
             </Wrapper>
