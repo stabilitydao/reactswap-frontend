@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Text, Flex, Message, Modal, InjectedModalProps, Checkbox } from '@reactswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
-import {networks, networkOrder} from '../../../config/constants/networks'
+import { networks, networkOrder } from '../../../config/constants/networks'
 
 interface ExpertModalProps {
   setshownetworkChangeModal: (boolean) => void
@@ -10,11 +10,11 @@ interface ExpertModalProps {
 
 async function switchNetwork(network: any, library: any) {
   try {
-    await library.currentProvider.request({
+    await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
       params: [{ chainId: network.hexchainid }],
     })
-  } catch (error) {
+  } catch (error: any) {
     if (error.code === 4902) {
       try {
         await library.currentProvider.request({
@@ -40,7 +40,7 @@ async function switchNetwork(network: any, library: any) {
   }
 }
 
-export { switchNetwork }
+// export { switchNetwork }
 const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeModal }) => {
   const { library, chainId } = useWeb3React()
 
