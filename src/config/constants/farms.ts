@@ -18,6 +18,57 @@ const farms: SerializedFarmConfig[] = [
     token: serializedTokens.syrup,
     quoteToken: serializedTokens.weth,
   },
+  {
+    pid: 1,
+    lpSymbol: 'PROFIT-ETH LP',
+    lpAddresses: {
+      3: '0x4394b0535D4A8A013B254961c6fCb87054ef60F1',
+      // 56: '',
+    },
+    token: serializedTokens.profit,
+    quoteToken: serializedTokens.weth,
+  },
+  {
+    pid: 5,
+    lpSymbol: 'WBTC-ETH LP',
+    lpAddresses: {
+      3: '0x5dc105683fd9f859d60059E922029201aD3d0560',
+    },
+    token: serializedTokens.wbtc,
+    quoteToken: serializedTokens.weth,
+    isCommunity: false,
+  },
+  {
+    pid: 2,
+    lpSymbol: 'USDC-ETH LP',
+    lpAddresses: {
+      3: '0x6E9247035945808DAf5068f73fBc57d18F60f677',
+    },
+    token: serializedTokens.usdc,
+    quoteToken: serializedTokens.weth,
+    isCommunity: false,
+  },
+  {
+    pid: 3,
+    lpSymbol: 'USDT-USDC LP',
+    lpAddresses: {
+      3: '0x56B3De253320E372Ccd47986B7Bcc6A4263D9513',
+    },
+    token: serializedTokens.usdt,
+    quoteToken: serializedTokens.usdc,
+    isCommunity: false,
+  },
+  {
+    pid: 4,
+    lpSymbol: 'DAI-USDC LP',
+    lpAddresses: {
+      3: '0xadadd535B185b1ee7786B70D1b131D683Fba96D9',
+    },
+    token: serializedTokens.dai,
+    quoteToken: serializedTokens.usdc,
+    isCommunity: false,
+  },
+
   /* {
     pid: 251,
     lpSymbol: 'CAKE-BNB LP',
@@ -28,16 +79,7 @@ const farms: SerializedFarmConfig[] = [
     token: serializedTokens.cake,
     quoteToken: serializedTokens.wbnb,
   }, */
-/*  {
-    pid: 252,
-    lpSymbol: 'BUSD-BNB LP',
-    lpAddresses: {
-      97: '',
-      56: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
-    },
-    token: serializedTokens.busd,
-    quoteToken: serializedTokens.wbnb,
-  }, */
+
   /**
    * V3 by order of release (some may be out of PID order due to multiplier boost)
    */

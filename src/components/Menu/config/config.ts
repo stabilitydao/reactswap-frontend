@@ -36,7 +36,7 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
         href: '/pools',
       },
       {
-        label: t('Xstake'),
+        label: t('X-Stake'),
         href: '/xstake',
       },
     ],

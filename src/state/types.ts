@@ -48,6 +48,7 @@ export interface SerializedFarm extends SerializedFarmConfig {
   tokenPriceVsQuote?: SerializedBigNumber
   poolWeight?: SerializedBigNumber
   userData?: SerializedFarmUserData
+  dbg?: string
 }
 
 export interface DeserializedFarm extends DeserializedFarmConfig {

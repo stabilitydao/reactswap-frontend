@@ -4,6 +4,10 @@ import { mainnetTokens, testnetTokens } from './tokens'
 // ropsten router
 export const ROUTER_ADDRESS = '0xE30184E3957E6f02d2C57ee4AFBe9A789222E586'
 
+export const USD_NATIVE_FARM_PID = {
+  [ChainId.ROPSTEN]: 2,
+}
+
 // a list of tokens by chain
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
@@ -26,8 +30,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     testnetTokens.react,
     testnetTokens.usdc,
     testnetTokens.profit,
-    // testnetTokens.usdt,
-    // testnetTokens.dai,
+    testnetTokens.usdt,
+    testnetTokens.dai,
   ],
 }
 

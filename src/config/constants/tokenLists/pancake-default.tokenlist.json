@@ -1,5 +1,5 @@
 {
-  "name": "ReactSwap Default List",
+  "name": "ReactSwap List",
   "timestamp": "2021-12-06T00:00:00Z",
   "version": {
     "major": 1,
@@ -13,9 +13,9 @@
     {
       "name": "Tether USD",
       "symbol": "USDT",
-      "address": "0x6EE856Ae55B6E1A249f04cd3b947141bc146273c",
+      "address": "0x110a13FC3efE6A245B50102D2d79B3E76125Ae83",
       "chainId": 3,
-      "decimals": 18,
+      "decimals": 6,
       "logoURI": "https://pancakeswap.finance/images/tokens/0x55d398326f99059ff775485246999027b3197955.png"
     },
     {
@@ -35,14 +35,6 @@
       "logoURI": "https://raw.githubusercontent.com/stabilitydao/app/main/public/profit.png"
     },
     {
-      "name": "Wrapped Ether",
-      "address": "0xc778417E063141139Fce010982780140Aa0cD5Ab",
-      "symbol": "WETH",
-      "decimals": 18,
-      "chainId": 3,
-      "logoURI": "https://ethereum.org/static/c48a5f760c34dfadcf05a208dab137cc/d1ef9/eth-diamond-rainbow.png"
-    },
-    {
       "name": "Dai Stablecoin",
       "address": "0xc2118d4d90b274016cB7a54c03EF52E6c537D957",
       "symbol": "DAI",
@@ -57,6 +49,14 @@
       "decimals": 6,
       "chainId": 3,
       "logoURI": "https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+    },
+    {
+      "name": "Wrapped BTC",
+      "address": "0x442Be68395613bDCD19778e761f03261ec46C06D",
+      "symbol": "WBTC",
+      "decimals": 18,
+      "chainId": 3,
+      "logoURI": "https://raw.githubusercontent.com/complusnetwork/default-token-list/master/src/bsc/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png"
     }
   ]
 }
