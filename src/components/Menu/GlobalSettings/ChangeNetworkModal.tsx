@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, Dispatch, SetStateAction } from 'react'
 import { Button, Text, Flex, Message, Modal, InjectedModalProps, Checkbox } from '@reactswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
+import { currentChainIdContext } from 'contexts/chainId'
 import { networks, networkOrder } from '../../../config/constants/networks'
-
 interface ExpertModalProps {
   setshownetworkChangeModal: (boolean) => void
 }
 
-async function switchNetwork(network: any, library: any) {
+async function switchNetwork(network: any, setChainId: any) {
   try {
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
       params: [{ chainId: network.hexchainid }],
     })
+    setChainId(network.chainid)
   } catch (error: any) {
     if (error.code === 4902) {
       try {
-        await library.currentProvider.request({
+        await window.ethereum.request({
           method: 'wallet_addEthereumChain',
           params: [
             {
@@ -33,6 +34,7 @@ async function switchNetwork(network: any, library: any) {
             },
           ],
         })
+        setChainId(network.chainid)
       } catch (err) {
         console.log(err)
       }
@@ -43,7 +45,7 @@ async function switchNetwork(network: any, library: any) {
 // export { switchNetwork }
 const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeModal }) => {
   const { library, chainId } = useWeb3React()
-
+  const { currentChainId, setChainId } = useContext(currentChainIdContext)
   const { t } = useTranslation()
 
   return (
@@ -62,8 +64,7 @@ const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeMo
             mb="8px"
             id="confirm-expert-mode"
             onClick={() => {
-              switchNetwork(net, library)
-              console.log(chainId)
+              switchNetwork(net, setChainId)
             }}
           >
             {t(net.name)}

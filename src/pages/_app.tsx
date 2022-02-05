@@ -4,6 +4,7 @@ import BigNumber from 'bignumber.js'
 import EasterEgg from 'components/EasterEgg'
 import GlobalCheckClaimStatus from 'components/GlobalCheckClaimStatus'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
+import ChainIdProvider from 'contexts/chainId/ChainIdProvider'
 import { ToastListener } from 'contexts/ToastsContext'
 import useEagerConnect from 'hooks/useEagerConnect'
 import { useInactiveListener } from 'hooks/useInactiveListener'
@@ -23,7 +24,6 @@ import ErrorBoundary from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
-
 // This config is required for number formatting
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -47,30 +47,29 @@ function MyApp(props: AppProps) {
 
   return (
     <>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, viewport-fit=cover"
-        />
-        <meta
-          name="description"
-          content="ReactSwap DeX"
-        />
-        <meta name="theme-color" content="#1FC7D4" />
-        <title>ReactSwap</title>
-      </Head>
-      <Providers store={store}>
-        <Blocklist>
-          <GlobalHooks />
-          <Updaters />
-          <ResetCSS />
-          <GlobalStyle />
-          <GlobalCheckClaimStatus excludeLocations={[]} />
-          <PersistGate loading={null} persistor={persistor}>
-            <App {...props} />
-          </PersistGate>
-        </Blocklist>
-      </Providers>
+      <ChainIdProvider>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, viewport-fit=cover"
+          />
+          <meta name="description" content="ReactSwap DeX" />
+          <meta name="theme-color" content="#1FC7D4" />
+          <title>ReactSwap</title>
+        </Head>
+        <Providers store={store}>
+          <Blocklist>
+            <GlobalHooks />
+            <Updaters />
+            <ResetCSS />
+            <GlobalStyle />
+            <GlobalCheckClaimStatus excludeLocations={[]} />
+            <PersistGate loading={null} persistor={persistor}>
+              <App {...props} />
+            </PersistGate>
+          </Blocklist>
+        </Providers>
+      </ChainIdProvider>
     </>
   )
 }
