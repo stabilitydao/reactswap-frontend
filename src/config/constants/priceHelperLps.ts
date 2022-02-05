@@ -11,13 +11,13 @@ const priceHelperLps: SerializedFarmConfig[] = [
    */
   {
     pid: null,
-    lpSymbol: 'QSD-BNB LP',
+    lpSymbol: 'USDC-ETH LP',
     lpAddresses: {
-      97: '',
-      56: '0x7b3ae32eE8C532016f3E31C8941D937c59e055B9',
+      // 56: '0x7b3ae32eE8C532016f3E31C8941D937c59e055B9',
+      3: '0x6E9247035945808DAf5068f73fBc57d18F60f677',
     },
-    token: tokens.qsd,
-    quoteToken: tokens.wbnb,
+    token: tokens.weth,
+    quoteToken: tokens.usdc,
   },
 ]
 

@@ -157,12 +157,14 @@ const Farms: React.FC = ({ children }) => {
   const farmsList = useCallback(
     (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
       let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
+        // console.log('Farms farmlist farm', farm)
         if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
           return farm
         }
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
+        // todo chainid from state
         const { cakeRewardsApr, lpRewardsApr } = isActive
-          ? getFarmApr(new BigNumber(farm.poolWeight), cakePrice, totalLiquidity, farm.lpAddresses[ChainId.MAINNET])
+          ? getFarmApr(new BigNumber(farm.poolWeight), cakePrice, totalLiquidity, farm.lpAddresses[ChainId.ROPSTEN])
           : { cakeRewardsApr: 0, lpRewardsApr: 0 }
 
         return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
@@ -337,14 +339,14 @@ const Farms: React.FC = ({ children }) => {
         <Heading scale="lg" color="text">
           {t('Stake LP tokens to earn.')}
         </Heading>
-        <NextLinkFromReactRouter to="/farms/auction" id="lottery-pot-banner">
+        {/*<NextLinkFromReactRouter to="/farms/auction" id="lottery-pot-banner">
           <Button p="0" variant="text">
             <Text color="primary" bold fontSize="16px" mr="4px">
               {t('Community Auctions')}
             </Text>
             <ArrowForwardIcon color="primary" />
           </Button>
-        </NextLinkFromReactRouter>
+        </NextLinkFromReactRouter>*/}
       </PageHeader>
       <Page>
         <ControlContainer>
