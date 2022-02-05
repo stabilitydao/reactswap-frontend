@@ -1,9 +1,14 @@
+import styled from 'styled-components'
 import React, { useState, useContext, Dispatch, SetStateAction } from 'react'
 import { Button, Text, Flex, Message, Modal, InjectedModalProps, Checkbox } from '@reactswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
 import { currentChainIdContext } from 'contexts/chainId'
 import { networks, networkOrder } from '../../../config/constants/networks'
+
+const Btn = styled(Button)`
+  background-color: ${(props) => (props.active === true ? '#24b7c2' : ({ theme }) => theme.colors.primary)};
+`
 interface ExpertModalProps {
   setshownetworkChangeModal: (boolean) => void
 }
@@ -60,15 +65,16 @@ const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeMo
       {networkOrder.map((id, index) => {
         const net = networks[id]
         return (
-          <Button
+          <Btn
             mb="8px"
             id="confirm-expert-mode"
             onClick={() => {
               switchNetwork(net, setChainId)
             }}
+            active={currentChainId === net.chainid ?? false}
           >
             {t(net.name)}
-          </Button>
+          </Btn>
         )
       })}
       <Button
