@@ -20,7 +20,7 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 1,
-    lpSymbol: 'PROFIT-ETH LP',
+    lpSymbol: 'PROFIT-ETH RLP',
     lpAddresses: {
       3: '0x4394b0535D4A8A013B254961c6fCb87054ef60F1',
       // 56: '',
@@ -30,7 +30,7 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 5,
-    lpSymbol: 'WBTC-ETH LP',
+    lpSymbol: 'WBTC-ETH RLP',
     lpAddresses: {
       3: '0x5dc105683fd9f859d60059E922029201aD3d0560',
     },
@@ -40,7 +40,7 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 2,
-    lpSymbol: 'USDC-ETH LP',
+    lpSymbol: 'USDC-ETH RLP',
     lpAddresses: {
       3: '0x6E9247035945808DAf5068f73fBc57d18F60f677',
     },
@@ -50,7 +50,7 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 3,
-    lpSymbol: 'USDT-USDC LP',
+    lpSymbol: 'USDT-USDC RLP',
     lpAddresses: {
       3: '0x56B3De253320E372Ccd47986B7Bcc6A4263D9513',
     },
@@ -60,7 +60,7 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 4,
-    lpSymbol: 'DAI-USDC LP',
+    lpSymbol: 'DAI-USDC RLP',
     lpAddresses: {
       3: '0xadadd535B185b1ee7786B70D1b131D683Fba96D9',
     },
