@@ -16,7 +16,7 @@ export const vaultPoolConfig = {
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
-  [VaultKey.IfoPool]: {
+  /*[VaultKey.IfoPool]: {
     name: 'IFO REACT',
     description: 'Stake REACT to participate in IFOs',
     autoCompoundFrequency: 1,
@@ -25,7 +25,7 @@ export const vaultPoolConfig = {
       primarySrc: `/images/tokens/${tokens.react.address}.svg`,
       secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
     },
-  },
+  },*/
 } as const
 
 const pools: SerializedPoolConfig[] = [

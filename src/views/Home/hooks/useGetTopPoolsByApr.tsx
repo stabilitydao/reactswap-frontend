@@ -22,12 +22,14 @@ export function usePoolsWithVault() {
       apr: getAprData(cakeAutoVault, cakeVault.fees.performanceFeeAsDecimal).apr,
       rawApr: cakePool.apr,
     }
-    const ifoPoolWithApr = {
+
+    // disable ifo
+    /*const ifoPoolWithApr = {
       ...ifoPoolVault,
       apr: getAprData(ifoPoolVault, ifoPool.fees.performanceFeeAsDecimal).apr,
       rawApr: cakePool.apr,
-    }
-    return [ifoPoolWithApr, cakeAutoVaultWithApr, ...poolsWithoutAutoVault]
+    }*/
+    return [/*ifoPoolWithApr,*/ cakeAutoVaultWithApr, ...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault, cakeVault.fees.performanceFeeAsDecimal, ifoPool.fees.performanceFeeAsDecimal])
 
   return pools
