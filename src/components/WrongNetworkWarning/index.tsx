@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Text, Flex, Box, CloseIcon, IconButton, Button, useMatchBreakpoints } from '@reactswap/uikit'
 import { useTranslation } from 'contexts/Localization'
+import { switchNetwork } from 'components/Menu/GlobalSettings/ChangeNetworkModal'
+import { networks, networkOrder } from 'config/constants/networks'
+import { currentChainIdContext } from 'contexts/chainId'
 
 const Container = styled(Flex)`
   overflow: hidden;
@@ -50,8 +53,10 @@ const ConWrapper = styled(Container)`
 
 const WrongNetworkWarning: React.FC = () => {
   const { t } = useTranslation()
+  const { currentChainId, setChainId, setsync, sync } = useContext(currentChainIdContext)
   const { isMobile, isMd } = useMatchBreakpoints()
-  const warningText = t('Please switch to Ethereum Mainnet.')
+  const net = networks[currentChainId]
+  const warningText = t(`Please switch to ${net.name} Mainnet.`)
   const warningTextAsParts = warningText.split(' ')
   const warningTextComponent = (
     <>
@@ -69,7 +74,14 @@ const WrongNetworkWarning: React.FC = () => {
           {text}
         </Text>
       ))}
-      <Button scale="sm">Switch Network</Button>
+      <Button
+        scale="sm"
+        onClick={() => {
+          switchNetwork(net, setChainId)
+        }}
+      >
+        Switch Network
+      </Button>
     </>
   )
   return (

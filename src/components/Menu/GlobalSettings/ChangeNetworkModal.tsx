@@ -7,7 +7,7 @@ import { currentChainIdContext } from 'contexts/chainId'
 import { networks, networkOrder } from '../../../config/constants/networks'
 
 const Btn = styled(Button)`
-  background-color: ${(props) => (props.active === true ? '#24b7c2' : ({ theme }) => theme.colors.primary)};
+  background-color: ${(props) => (props.active === true ? '#187a81' : ({ theme }) => theme.colors.primary)};
 `
 interface ExpertModalProps {
   setshownetworkChangeModal: (boolean) => void
@@ -47,10 +47,10 @@ async function switchNetwork(network: any, setChainId: any) {
   }
 }
 
-// export { switchNetwork }
+export { switchNetwork }
 const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeModal }) => {
-  const { library, chainId } = useWeb3React()
-  const { currentChainId, setChainId } = useContext(currentChainIdContext)
+  const { library, chainId, active } = useWeb3React()
+  const { currentChainId, setChainId, setsync, sync } = useContext(currentChainIdContext)
   const { t } = useTranslation()
 
   return (
@@ -69,7 +69,12 @@ const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeMo
             mb="8px"
             id="confirm-expert-mode"
             onClick={() => {
-              switchNetwork(net, setChainId)
+              if (active) {
+                switchNetwork(net, setChainId)
+              } else {
+                setChainId(net.chainid)
+              }
+              setshownetworkChangeModal(false)
             }}
             active={currentChainId === net.chainid ?? false}
           >

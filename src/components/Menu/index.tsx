@@ -8,6 +8,7 @@ import { useTranslation } from 'contexts/Localization'
 // import PhishingWarningBanner from 'components/PhishingWarningBanner'
 import WrongNetworkWarning from 'components/WrongNetworkWarning'
 import useTheme from 'hooks/useTheme'
+import { useWeb3React } from '@web3-react/core'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { usePhishingBannerManager } from 'state/user/hooks'
 import { currentChainIdContext } from 'contexts/chainId'
@@ -18,14 +19,19 @@ import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
 import { footerLinks } from './config/footerConfig'
 
 const Menu = (props) => {
+  const { chainId, active } = useWeb3React()
   const { isDark, toggleTheme } = useTheme()
   const cakePriceUsd = usePriceCakeBusd()
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useRouter()
-  const [showPhishingWarningBanner] = usePhishingBannerManager()
-  const { currentChainId, setChainId } = useContext(currentChainIdContext)
+  const { currentChainId, setChainId, sync } = useContext(currentChainIdContext)
   const activeMenuItem = getActiveMenuItem({ menuConfig: config(t), pathname })
   const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
+  // console.log((active ? (sync ? currentChainId : chainId) : currentChainId) === currentChainId)
+  // console.log(active ? (sync ? currentChainId : chainId) : currentChainId)
+  // console.log(currentChainId)
+  // console.log(sync ? currentChainId : chainId)
+  console.log(chainId, ' i')
 
   return (
     <UikitMenu
@@ -34,7 +40,11 @@ const Menu = (props) => {
       }}
       userMenu={<UserMenu />}
       globalMenu={<GlobalSettings />}
-      banner={!(currentChainId === 3) && typeof window !== 'undefined' && <WrongNetworkWarning />}
+      banner={
+        !((active ? (sync ? currentChainId : chainId) : currentChainId) === currentChainId) &&
+        active &&
+        typeof window !== 'undefined' && <WrongNetworkWarning />
+      }
       isDark={isDark}
       toggleTheme={toggleTheme}
       currentLang={currentLanguage.code}
