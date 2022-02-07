@@ -12,8 +12,8 @@
         "type": "address"
       },
       {
-        "internalType": "contract IMasterChef",
-        "name": "_masterchef",
+        "internalType": "contract IReactFarm",
+        "name": "_farm",
         "type": "address"
       },
       {
@@ -261,7 +261,7 @@
   },
   {
     "inputs": [],
-    "name": "calculateHarvestCakeRewards",
+    "name": "calculateHarvestReactRewards",
     "outputs": [
       {
         "internalType": "uint256",
@@ -274,7 +274,7 @@
   },
   {
     "inputs": [],
-    "name": "calculateTotalPendingCakeRewards",
+    "name": "calculateTotalPendingReactRewards",
     "outputs": [
       {
         "internalType": "uint256",
@@ -320,6 +320,19 @@
   },
   {
     "inputs": [],
+    "name": "farm",
+    "outputs": [
+      {
+        "internalType": "contract IReactFarm",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getPricePerFullShare",
     "outputs": [
       {
@@ -359,19 +372,6 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "masterchef",
-    "outputs": [
-      {
-        "internalType": "contract IMasterChef",
-        "name": "",
-        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -602,7 +602,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "cakeAtLastUserAction",
+        "name": "reactAtLastUserAction",
         "type": "uint256"
       },
       {

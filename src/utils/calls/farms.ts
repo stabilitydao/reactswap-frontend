@@ -10,7 +10,7 @@ export const stakeFarm = async (masterChefContract, pid, amount) => {
   const gasPrice = getGasPrice()
   const value = new BigNumber(amount).times(DEFAULT_TOKEN_DECIMAL).toString()
   if (pid === 0) {
-    return masterChefContract.enterStaking(value, { ...options, gasPrice })
+    return masterChefContract.enterStaking(value, { gasLimit: 300000, gasPrice })
   }
 
   return masterChefContract.deposit(pid, value, { ...options, gasPrice })

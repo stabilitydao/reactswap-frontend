@@ -65,7 +65,7 @@ export const fetchPoolsTotalStaking = async () => {
 
   const callsBnbPools = bnbPool.map((poolConfig) => {
     return {
-      address: tokens.wbnb.address,
+      address: tokens.weth.address,
       name: 'balanceOf',
       params: [getAddress(poolConfig.contractAddress)],
     }
@@ -104,7 +104,7 @@ export const fetchPoolsStakingLimits = async (
   poolsWithStakingLimit: number[],
 ): Promise<{ [key: string]: BigNumber }> => {
   const validPools = poolsConfig
-    .filter((p) => p.stakingToken.symbol !== 'BNB' && !p.isFinished)
+    .filter((p) => p.stakingToken.symbol !== 'ETH' && !p.isFinished)
     .filter((p) => !poolsWithStakingLimit.includes(p.sousId))
 
   // Get the staking limit for each valid pool

@@ -112,7 +112,7 @@ export const testnetTokens = defineTokens({
   ),
   react: new Token(
     ROPSTEN,
-    '0x2280EC541a667bC94F86ca18e6F7179D56b058A6',
+    '0x2925293d027391eD3CC24bf4a4B80D072FCBB714',
     18,
     'REACT',
     'ReactSwap',
