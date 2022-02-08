@@ -10,6 +10,8 @@ import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { ethers, Contract } from 'ethers'
 import useToast from 'hooks/useToast'
+import { getXStakeAddress } from 'utils/addressHelpers'
+
 const StakeInput = styled.input`
   outline: none;
   width: 100%;
@@ -163,6 +165,25 @@ const Voting = () => {
       console.log(error)
     }
   }
+  async function handleAddXReact() {
+    window.ethereum
+      .request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: getXStakeAddress(),
+            symbol: 'xReact',
+            decimals: 18,
+            image: 'https://stabilitydao.org/xreact.png',
+          },
+        },
+      })
+      .then(() => {})
+      .catch(() => {
+        toastError(t('Error'), t('Please try again.'))
+      })
+  }
   useEffect(() => {
     handleisApproved()
   })
@@ -188,6 +209,18 @@ const Voting = () => {
       <Page>
         <Flex justifyContent="center">
           <Flex flexDirection="column" width={['100%', '500px']}>
+            <Wrapper style={{ marginBottom: '20px' }}>
+              <Flex width="100%">
+                <Button
+                  width="100%"
+                  onClick={() => {
+                    handleAddXReact()
+                  }}
+                >
+                  Add Xreact to metamask
+                </Button>
+              </Flex>
+            </Wrapper>
             <Wrapper style={{ marginBottom: '20px' }}>
               <Flex mb="10px" width="100%">
                 <BalanceTab>Balance: 100 React</BalanceTab>
