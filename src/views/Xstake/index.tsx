@@ -62,6 +62,8 @@ const BalanceTab = styled.div`
 const Voting = () => {
   const [actionType, setactionType] = useState<boolean>(true)
   const [isApproved, setisApproved] = useState<boolean>(false)
+  const [stakedReact, setstakedReact] = useState<any>()
+  const [xReactSupply, setxReactSupply] = useState<any>()
   const [Stake, setStake] = useState<string | null>(null)
   const [UnStake, setUnStake] = useState<string | null>(null)
   const XStakeContract = useXStakeContract()
@@ -70,6 +72,14 @@ const Voting = () => {
   const { callWithGasPrice } = useCallWithGasPrice()
   const { t } = useTranslation()
   const { account, active } = useWeb3React()
+  const getStakedReact = async () => {
+    const stakedreact = await callWithGasPrice(ReactTokenContract, 'balanceOf', [XStakeContract.address])
+    setstakedReact(ethers.utils.formatEther(stakedreact.toString()))
+  }
+  const getXReactSupply = async () => {
+    const xreactsupply = await callWithGasPrice(XStakeContract, 'totalSupply')
+    setxReactSupply(ethers.utils.formatEther(xreactsupply.toString()))
+  }
   const handleApprove = async () => {
     if (active) {
       try {
@@ -186,6 +196,8 @@ const Voting = () => {
   }
   useEffect(() => {
     handleisApproved()
+    getStakedReact()
+    getXReactSupply()
   })
 
   return (
@@ -252,7 +264,7 @@ const Voting = () => {
                 <Flex display="flex" justifyContent="space-between" width="100%">
                   <Heading color="white">{actionType ? 'Stake' : 'UnStake'}</Heading>
                   <Tag variant="secondary" outline mr="8px">
-                    1 xSUSHI = 1.2361 SUSHI
+                    1 xSUSHI = {stakedReact / xReactSupply} SUSHI
                   </Tag>
                 </Flex>
               </Flex>
