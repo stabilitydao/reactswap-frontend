@@ -23,10 +23,10 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     mainnetTokens.usdt,
     mainnetTokens.dai,
     mainnetTokens.wbtc,
-    // mainnetTokens.wmatic,
+    mainnetTokens.wmatic,
   ],
   [ChainId.TESTNET]: [
-    testnetTokens.eth,
+    testnetTokens.weth,
     testnetTokens.react,
     testnetTokens.usdc,
     testnetTokens.profit,
@@ -54,14 +54,38 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
-  [ChainId.POLYGON]: [mainnetTokens.weth, mainnetTokens.react, mainnetTokens.usdc],
-  [ChainId.ROPSTEN]: [/* testnetTokens.weth, */ testnetTokens.react, testnetTokens.usdc, testnetTokens.profit],
+  [ChainId.POLYGON]: [
+    // mainnetTokens.weth,
+    mainnetTokens.profit,
+    mainnetTokens.usdc,
+    mainnetTokens.react,
+  ],
+  [ChainId.ROPSTEN]: [
+     // testnetTokens.weth,
+    testnetTokens.profit,
+    testnetTokens.usdc,
+    testnetTokens.react,
+  ],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
-  [ChainId.POLYGON]: [mainnetTokens.weth, mainnetTokens.react, mainnetTokens.usdc, mainnetTokens.usdt],
-  [ChainId.ROPSTEN]: [ testnetTokens.react, testnetTokens.usdc, testnetTokens.profit],
+  [ChainId.POLYGON]: [
+    mainnetTokens.weth,
+    mainnetTokens.wbtc,
+    mainnetTokens.react,
+    mainnetTokens.usdc,
+    mainnetTokens.usdt,
+    mainnetTokens.profit,
+  ],
+  [ChainId.ROPSTEN]: [
+    testnetTokens.react,
+    testnetTokens.weth,
+    testnetTokens.usdt,
+    testnetTokens.wbtc,
+    testnetTokens.usdc,
+    testnetTokens.profit,
+  ],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
