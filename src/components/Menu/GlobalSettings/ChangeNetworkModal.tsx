@@ -69,11 +69,11 @@ const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeMo
             mb="8px"
             id="confirm-expert-mode"
             onClick={() => {
-              if (active) {
-                switchNetwork(net, setChainId)
-              } else {
-                setChainId(net.chainid)
-              }
+              // if (active) {
+              //   switchNetwork(net, setChainId)
+              // } else {
+              setChainId(net.chainid)
+              // }
               setshownetworkChangeModal(false)
             }}
             active={currentChainId === net.chainid ?? false}

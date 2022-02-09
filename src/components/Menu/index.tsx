@@ -24,14 +24,9 @@ const Menu = (props) => {
   const cakePriceUsd = usePriceCakeBusd()
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useRouter()
-  const { currentChainId, setChainId, sync } = useContext(currentChainIdContext)
+  const { currentChainId, setChainId } = useContext(currentChainIdContext)
   const activeMenuItem = getActiveMenuItem({ menuConfig: config(t), pathname })
   const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
-  // console.log((active ? (sync ? currentChainId : chainId) : currentChainId) === currentChainId)
-  // console.log(active ? (sync ? currentChainId : chainId) : currentChainId)
-  // console.log(currentChainId)
-  // console.log(sync ? currentChainId : chainId)
-  console.log(chainId, ' i')
 
   return (
     <UikitMenu
@@ -41,7 +36,7 @@ const Menu = (props) => {
       userMenu={<UserMenu />}
       globalMenu={<GlobalSettings />}
       banner={
-        !((active ? (sync ? currentChainId : chainId) : currentChainId) === currentChainId) &&
+        !((active ? chainId : currentChainId) === currentChainId) &&
         active &&
         typeof window !== 'undefined' && <WrongNetworkWarning />
       }
