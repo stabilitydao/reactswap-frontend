@@ -74,7 +74,7 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({ pool, account }) =>
     earningTokenPrice,
   )
 
-  const labelText = t('Recent CAKE profit')
+  const labelText = t('Recent REACT profit')
   const earningTokenBalance = autoCakeToDisplay
   const hasEarnings = hasAutoEarnings
   const earningTokenDollarBalance = autoUsdToDisplay
@@ -101,7 +101,7 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({ pool, account }) =>
     <>
       <Text bold>
         {autoCakeToDisplay.toFixed(3)}
-        {' CAKE'}
+        {' REACT'}
       </Text>
       <Text bold>~${autoUsdToDisplay.toFixed(2)}</Text>
       <Text>{t('Earned since your last action')}:</Text>
@@ -109,7 +109,7 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({ pool, account }) =>
       {hourDiffSinceLastAction ? (
         <>
           <Text>{t('Your average per hour')}:</Text>
-          <Text bold>{t('CAKE per hour: %amount%', { amount: earnedCakePerHour.toFixed(2) })}</Text>
+          <Text bold>{t('REACT per hour: %amount%', { amount: earnedCakePerHour.toFixed(2) })}</Text>
           <Text bold>{t('per hour: ~$%amount%', { amount: earnedUsdPerHour.toFixed(2) })}</Text>
         </>
       ) : null}

@@ -29,6 +29,16 @@ const farms: SerializedFarmConfig[] = [
     quoteToken: serializedTokens.weth,
   },
   {
+    pid: 6,
+    lpSymbol: 'REACT-USDC RLP',
+    lpAddresses: {
+      3: '0xcC5B23AA8B1437a3846F603b87eF55875bdFCB87',
+    },
+    token: serializedTokens.react,
+    quoteToken: serializedTokens.usdc,
+    isCommunity: false,
+  },
+  {
     pid: 5,
     lpSymbol: 'WBTC-ETH RLP',
     lpAddresses: {
@@ -68,7 +78,6 @@ const farms: SerializedFarmConfig[] = [
     quoteToken: serializedTokens.usdc,
     isCommunity: false,
   },
-
   /* {
     pid: 251,
     lpSymbol: 'CAKE-BNB LP',
