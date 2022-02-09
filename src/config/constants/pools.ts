@@ -9,7 +9,7 @@ export const vaultPoolConfig = {
   [VaultKey.CakeVault]: {
     name: 'Auto REACT',
     description: 'Automatic restaking',
-    autoCompoundFrequency: 5000,
+    autoCompoundFrequency: 100,
     gasLimit: 480000,
     tokenImage: {
       primarySrc: `/images/tokens/${tokens.react.address}.png`,
@@ -38,7 +38,7 @@ const pools: SerializedPoolConfig[] = [
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
-    tokenPerBlock: '1',
+    tokenPerBlock: '0.1',
     sortOrder: 1,
     isFinished: false,
   },
