@@ -207,10 +207,10 @@ const Voting = () => {
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="2" flexDirection="column" mr={['8px', 0]}>
             <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-              {t('Stake React')}
+              {t('X-Stake Bar')}
             </Heading>
             <Heading scale="md" color="text">
-              {t('X-Stake Bar is the coolest bar in town.')}
+              {t('Maximize yield by staking REACT for xREACT')}
             </Heading>
           </Flex>
           <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
@@ -264,7 +264,7 @@ const Voting = () => {
                 <Flex display="flex" justifyContent="space-between" width="100%">
                   <Heading color="white">{actionType ? 'Stake' : 'UnStake'}</Heading>
                   <Tag variant="secondary" outline mr="8px">
-                    1 xSUSHI = {stakedReact / xReactSupply} SUSHI
+                    1 xREACT = {stakedReact / xReactSupply} REACT
                   </Tag>
                 </Flex>
               </Flex>
