@@ -1,7 +1,9 @@
 import { ResetCSS } from '@reactswap/uikit'
 import Script from 'next/script'
 import BigNumber from 'bignumber.js'
+import styled from 'styled-components'
 import EasterEgg from 'components/EasterEgg'
+import { useWeb3React } from '@web3-react/core'
 import GlobalCheckClaimStatus from 'components/GlobalCheckClaimStatus'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
 import ChainIdProvider from 'contexts/chainId/ChainIdProvider'
@@ -24,6 +26,8 @@ import ErrorBoundary from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
+import { Button, NotificationDot, Image } from '@reactswap/uikit'
+
 // This config is required for number formatting
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -82,9 +86,19 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
+const NetworkFixed = styled.div`
+  background-color: #1d1630;
+  padding: 6px;
+  border-left: 6px solid white;
+  border-radius: 0px 12px 12px 0px;
+  position: fixed;
+  bottom: 100px;
+`
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const { active, chainId } = useWeb3React()
   // Use the layout defined at the page level, if available
   const Layout = Component.Layout || Fragment
+
   return (
     <ErrorBoundary>
       <Menu>
@@ -95,6 +109,32 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       <EasterEgg iterations={2} />
       <ToastListener />
       <SubgraphHealthIndicator />
+      {active && (
+        <NetworkFixed>
+          <NotificationDot show>
+            {active &&
+              [
+                { name: 'ethereum', chainid: 1, image: 'ethereum.jpg' },
+                { name: 'ropsten', chainid: 3, image: 'ropsten.png' },
+                { name: 'polygon', chainid: 137, image: 'polygon.jpg' },
+              ].map(({ name, chainid, image }): any => {
+                if (chainid === chainId) {
+                  return (
+                    <img
+                      src={`/networks/${image}`}
+                      width={32}
+                      height={32}
+                      alt={name}
+                      style={{ borderRadius: '10px' }}
+                    />
+                  )
+                } else {
+                  return <div></div>
+                }
+              })}
+          </NotificationDot>
+        </NetworkFixed>
+      )}
     </ErrorBoundary>
   )
 }
