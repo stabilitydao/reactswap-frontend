@@ -6,8 +6,7 @@ const NETWORK_URLS: { [chainId in ChainId]: string } = {
   [ChainId.MUMBAI]: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_KEY}`,
 }
 
-
-export const networkOrder = [137, 3, 80001]
+export const networkOrder = [3]
 
 export const networks = {
   137: {
@@ -48,4 +47,3 @@ export const networks = {
 }
 
 export default NETWORK_URLS
-

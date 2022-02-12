@@ -1,9 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { parseBytes32String } from '@ethersproject/strings'
-import { /*Currency, */ETHER,/* Token, currencyEquals*/ } from '@reactswap/sdk'
-import { Currency,/* ETHER,*/ Token, currencyEquals } from '@reactswap/sdk'
-import { useMemo } from 'react'
+import { /*Currency, */ ETHER /* Token, currencyEquals*/ } from '@reactswap/sdk'
+import { Currency, /* ETHER,*/ Token, currencyEquals } from '@reactswap/sdk'
+import { useMemo, useContext } from 'react'
 import { arrayify } from 'ethers/lib/utils'
+import { currentChainIdContext } from 'contexts/chainId'
+
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import {
   TokenAddressMap,
@@ -24,16 +26,18 @@ import { filterTokens } from '../components/SearchModal/filtering'
 function useTokensFromMap(tokenMap: TokenAddressMap, includeUserAdded: boolean): { [address: string]: Token } {
   const { chainId } = useActiveWeb3React()
   const userAddedTokens = useUserAddedTokens()
-
+  const { currentChainId, setChainId } = useContext(currentChainIdContext)
   return useMemo(() => {
     if (!chainId) return {}
-
     // reduce to just tokens
     // console.log(chainId)
-    const mapWithoutUrls = Object.keys(tokenMap[chainId]).reduce<{ [address: string]: Token }>((newMap, address) => {
-      newMap[address] = tokenMap[chainId][address].token
-      return newMap
-    }, {})
+    const mapWithoutUrls = Object.keys(tokenMap[currentChainId]).reduce<{ [address: string]: Token }>(
+      (newMap, address) => {
+        newMap[address] = tokenMap[currentChainId][address].token
+        return newMap
+      },
+      {},
+    )
 
     if (includeUserAdded) {
       return (
