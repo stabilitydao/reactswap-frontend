@@ -1,8 +1,8 @@
-import { ResetCSS } from '@reactswap/uikit'
+import { ResetCSS, Button, NotificationDot, Image } from '@reactswap/uikit'
 import Script from 'next/script'
 import BigNumber from 'bignumber.js'
-import styled from 'styled-components'
 import EasterEgg from 'components/EasterEgg'
+import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
 import GlobalCheckClaimStatus from 'components/GlobalCheckClaimStatus'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
@@ -26,7 +26,6 @@ import ErrorBoundary from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
-import { Button, NotificationDot, Image } from '@reactswap/uikit'
 
 // This config is required for number formatting
 BigNumber.config({

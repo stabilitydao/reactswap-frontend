@@ -9,16 +9,44 @@ import getNodeUrl from './getRpcUrl'
 const POLLING_INTERVAL = 12000
 const chainId = parseInt(process.env.NEXT_PUBLIC_CHAIN_ID, 10)
 const rpcUrl = getNodeUrl(chainId)
-
-const injected = new InjectedConnector({ supportedChainIds: [chainId] })
+const supportedChainIds = [
+  1, // mainnet
+  3, // ropsten
+  4, // rinkeby
+  5, // goreli
+  42, // kovan
+  80001, // Mumbai
+  250, // fantom
+  4002, // fantom testnet
+  137, // matic
+  80001, // matic testnet
+  100, // xdai
+  56, // binance smart chain
+  97, // binance smart chain testnet
+  1287, // moonbase
+  43114, // avalanche
+  43113, // fuji
+  128, // heco
+  256, // heco testnet
+  1666600000, // harmony
+  1666700000, // harmony testnet
+  66, // okex testnet
+  65, // okex testnet
+  42161, // arbitrum
+  42220, // celo
+  11297108109, // palm
+  1285, // moonriver
+]
+const injected = new InjectedConnector({ supportedChainIds })
 
 const walletconnect = new WalletConnectConnector({
   rpc: { [chainId]: rpcUrl },
   qrcode: true,
   pollingInterval: POLLING_INTERVAL,
+  supportedChainIds,
 })
 
-const bscConnector = new BscConnector({ supportedChainIds: [chainId] })
+const bscConnector = new BscConnector({ supportedChainIds })
 
 export const connectorsByName: { [connectorName in ConnectorNames]: any } = {
   [ConnectorNames.Injected]: injected,
