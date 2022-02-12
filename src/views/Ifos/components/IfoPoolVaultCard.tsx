@@ -89,7 +89,7 @@ const IfoPoolVaultCardMobile: React.FC = () => {
       <CardHeader p="16px">
         <Flex justifyContent="space-between" alignItems="center">
           <StyledTokenContent alignItems="center" flex={1}>
-            <TokenPairImage width={24} height={24} primaryToken={tokens.cake} secondaryToken={tokens.cake} />
+            <TokenPairImage width={24} height={24} primaryToken={tokens.react} secondaryToken={tokens.react} />
             <Box ml="8px">
               <Text fontSize="12px" bold color="secondary" textTransform="uppercase">
                 {t('Staked')}

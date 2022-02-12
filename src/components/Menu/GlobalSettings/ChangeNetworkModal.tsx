@@ -50,7 +50,7 @@ async function switchNetwork(network: any, setChainId: any) {
 export { switchNetwork }
 const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeModal }) => {
   const { library, chainId, active } = useWeb3React()
-  const { currentChainId, setChainId, setsync, sync } = useContext(currentChainIdContext)
+  const { currentChainId, setChainId } = useContext(currentChainIdContext)
   const { t } = useTranslation()
 
   return (

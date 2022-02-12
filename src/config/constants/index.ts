@@ -25,7 +25,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     mainnetTokens.wbtc,
     mainnetTokens.wmatic,
   ],
-  [ChainId.TESTNET]: [
+  [ChainId.ROPSTEN]: [
     testnetTokens.weth,
     testnetTokens.react,
     testnetTokens.usdc,
@@ -33,6 +33,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     testnetTokens.usdt,
     testnetTokens.dai,
   ],
+  [ChainId.MUMBAI]: [],
 }
 
 /**
@@ -66,6 +67,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
     testnetTokens.usdc,
     testnetTokens.react,
   ],
+  [ChainId.MUMBAI]: [],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -86,6 +88,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     testnetTokens.usdc,
     testnetTokens.profit,
   ],
+  [ChainId.MUMBAI]: [],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

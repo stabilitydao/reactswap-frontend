@@ -77,30 +77,37 @@ export default {
   predictions: {
     56: '0x18B2A687610328590Bc8F2e5fEdDe3b582A49cdA',
     97: '',
+    3: '',
   },
   chainlinkOracle: {
     56: '0xD276fCF34D54A926773c399eBAa772C12ec394aC',
     97: '',
+    3: '',
   },
   bunnySpecialCakeVault: {
     56: '0x5B4a770Abe7Eafb2601CA4dF9d73EA99363E60a4',
     97: '',
+    3: '',
   },
   bunnySpecialPrediction: {
     56: '0x342c99e9aC24157657095eC69CB04b73257e7A9C',
     97: '',
+    3: '',
   },
   bunnySpecialLottery: {
     56: '0x24ED31d31C5868e5a96aA77fdcB890f3511fa0b2',
     97: '0x382cB497110F398F0f152cae82821476AE51c9cF',
+    3: '',
   },
   bunnySpecialXmas: {
     56: '0x59EdDF3c21509dA3b0aCCd7c5ccc596d930f4783',
     97: '',
+    3: '',
   },
   farmAuction: {
     56: '0xb92Ab7c1edcb273AbA24b0656cEb3681654805D2',
     97: '0x3F9602593b4f7C67ab045DB51BbDEa94E40fA9Fe',
+    3: '',
   },
   AnniversaryAchievement: {
     56: '0x787980da5491118C3cB33B21aB50c8c379D2C552',
@@ -110,14 +117,17 @@ export default {
   nftMarket: {
     56: '0x17539cCa21C7933Df5c980172d22659B8C345C5A',
     97: '0x7f9f37ddcaa33893f9beb3d8748c8d6bfbde6ab2',
+    3: '',
   },
   nftSale: {
     56: '0x29fE7148636b7Ae0b1E53777b28dfbaA9327af8E',
     97: '0xe486De509c5381cbdBF3e71F57D7F1f7570f5c46',
+    3: '',
   },
   pancakeSquad: {
     56: '0x0a8901b0E25DEb55A87524f0cC164E9644020EBA',
     97: '0xfC0c3F11fDA72Cb9A56F28Ec8D44C0ae4B3ABF86',
+    3: '',
   },
   xstake: {
     56: '',

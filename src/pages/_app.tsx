@@ -127,9 +127,9 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
                       style={{ borderRadius: '10px' }}
                     />
                   )
-                } else {
-                  return <div></div>
                 }
+                  return <div />
+
               })}
           </NotificationDot>
         </NetworkFixed>

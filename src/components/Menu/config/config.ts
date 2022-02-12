@@ -42,7 +42,7 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     ],
   },
 
-  /*{
+  /* {
     label: t('Win'),
     href: '/prediction',
     icon: 'Trophy',
@@ -119,7 +119,7 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
         type: DropdownMenuItemType.EXTERNAL_LINK,
       },
     ],
-  },*/
+  }, */
 ]
 
 export default config

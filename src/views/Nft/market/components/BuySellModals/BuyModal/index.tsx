@@ -43,7 +43,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ nftToBuy, onDismiss }) => {
   const { callWithGasPrice } = useCallWithGasPrice()
 
   const { account } = useWeb3React()
-  const wbnbContract = useERC20(tokens.wbnb.address)
+  const wbnbContract = useERC20(tokens.weth.address)
   const nftMarketContract = useNftMarketContract()
 
   const { toastSuccess } = useToast()
@@ -55,7 +55,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ nftToBuy, onDismiss }) => {
   const { balance: bnbBalance, fetchStatus: bnbFetchStatus } = useGetBnbBalance()
   const formattedBnbBalance = parseFloat(formatEther(bnbBalance))
   // WBNB - returns BigNumber
-  const { balance: wbnbBalance, fetchStatus: wbnbFetchStatus } = useTokenBalance(tokens.wbnb.address)
+  const { balance: wbnbBalance, fetchStatus: wbnbFetchStatus } = useTokenBalance(tokens.weth.address)
   const formattedWbnbBalance = getBalanceNumber(wbnbBalance)
 
   const walletBalance = paymentCurrency === PaymentCurrency.BNB ? formattedBnbBalance : formattedWbnbBalance
