@@ -1,5 +1,5 @@
 import React from 'react'
-import { NoProfileAvatarIcon, Flex, Heading, Skeleton, Text, Box } from '@reactswap/uikit'
+import { AccountIcon, Flex, Heading, Skeleton, Text, Box } from '@reactswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import styled from 'styled-components'
 import { useProfile } from 'state/profile/hooks'
@@ -30,7 +30,7 @@ const Sticker = styled(Flex)`
   box-shadow: ${({ theme }) => theme.card.boxShadow};
 `
 
-const StyledNoProfileAvatarIcon = styled(NoProfileAvatarIcon)`
+const StyledNoProfileAvatarIcon = styled(AccountIcon)`
   height: 100%;
   width: 100%;
 `
@@ -69,7 +69,7 @@ const UserDetail = () => {
     <>
       <Desktop>
         <Box mr="24px">
-          <Sticker>{profile ? <ProfileAvatarWithTeam profile={profile} /> : <StyledNoProfileAvatarIcon />}</Sticker>
+          {profile ? <Sticker><ProfileAvatarWithTeam profile={profile} /></Sticker> : <StyledNoProfileAvatarIcon />}
         </Box>
         <Flex flexDirection="column">
           {getDesktopHeading()}
