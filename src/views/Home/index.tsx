@@ -75,7 +75,7 @@ const Home: React.FC = () => {
         background={
           theme.isDark
             ? 'radial-gradient(103.12% 50% at 50% 50%, #21193A 0%, #191326 100%)'
-            : 'linear-gradient(139.73deg, #E6FDFF 0%, #F3EFFF 100%)'
+            : 'linear-gradient(139.73deg, #E6FDFF 0%, #6FB6F1 100%)'
         }
         index={2}
         hasCurvedDivider={false}
@@ -92,8 +92,8 @@ const Home: React.FC = () => {
         innerProps={{ style: HomeSectionContainerStyles }}
         background={
           theme.isDark
-            ? 'linear-gradient(180deg, #1d1630 0%, #091115 100%)'
-            : 'linear-gradient(180deg, #6FB6F1 0%, #EAF2F6 100%)'
+            ? 'linear-gradient(180deg, #781b1b 0%, #2d1155 100%)'
+            : 'linear-gradient(180deg, #ffffff 0%, #858cff 100%)'
         }
         index={2}
         hasCurvedDivider={false}
@@ -103,23 +103,23 @@ const Home: React.FC = () => {
             Roadmap
           </Heading>
           <Flex flexDirection="column">
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />Uniswap-V2 based AMM</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />Farms</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />React Pools</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />X-Stake Bar</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />RFI / TAX</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />Ropsten testnet pre-alpha</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Mumbai testnet alpha</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Polygon mainnet deployment</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">TGE</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Liquidity lock</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Liquidity migration</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Limit orders</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Isolated lending & leverage</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Initial farm offering launchpad</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Trading competitions (profiles, teams)</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Prediction</Text>
-            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Lottery</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5}><CheckmarkIcon color="text" mr={1} />Uniswap-V2 based AMM</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5}><CheckmarkIcon color="text" mr={1} />Farms</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5}><CheckmarkIcon color="text" mr={1} />React Pools</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5}><CheckmarkIcon color="text" mr={1} />X-Stake Bar</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5}><CheckmarkIcon color="text" mr={1} />RFI / TAX</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5}><CheckmarkIcon color="text" mr={1} />Ropsten testnet pre-alpha</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Mumbai testnet alpha</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Polygon mainnet deployment</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">TGE</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Liquidity lock</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Liquidity migration</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Limit orders</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Isolated lending & leverage</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Initial farm offering launchpad</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Trading competitions (profiles, teams)</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Prediction</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Lottery</Text>
           </Flex>
         </div>
       </PageSection>
@@ -137,28 +137,26 @@ const Home: React.FC = () => {
       </PageSection> */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        background={
+          theme.isDark
+            ? 'linear-gradient(180deg, #2d1155 0%, #084956 100%)'
+            : 'linear-gradient(180deg, #858cff 0%, #EAF2F6 100%)'
+        }
         index={2}
         hasCurvedDivider={false}
       >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper top fill={theme.isDark ? '#201335' : '#D8CBED'}>
-            <WedgeTopLeft />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
         <SalesSection {...swapSectionData} />
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.gradients.cardHeader}
+        background={
+          theme.isDark
+            ? 'linear-gradient(180deg, #084956 0%, #150330 100%)'
+            : 'linear-gradient(180deg, #EAF2F6 0%, #d4fffa 100%)'
+        }
         index={2}
         hasCurvedDivider={false}
       >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper width="150%" top fill={theme.colors.background}>
-            <WedgeTopRight />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
         <SalesSection {...earnSectionData} />
         <FarmsPoolsRow />
       </PageSection>
@@ -176,21 +174,25 @@ const Home: React.FC = () => {
       </PageSection> */}
        <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        background={
+          theme.isDark
+            ? 'linear-gradient(180deg, #150330 0%, #27262c 100%)'
+            : 'linear-gradient(180deg, #d4fffa 0%, #efa9ff 100%)'
+        }
         index={2}
         hasCurvedDivider={false}
       >
         <SalesSection {...cakeSectionData} />
         <CakeDataRow />
       </PageSection>
-      {/*<PageSection
+      {/* <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(180deg, #7645D9 0%, #5121B1 100%)"
         index={2}
         hasCurvedDivider={false}
       >
         <Footer />
-      </PageSection>*/}
+      </PageSection> */}
     </>
   )
 }
