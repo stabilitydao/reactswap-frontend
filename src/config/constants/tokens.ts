@@ -116,7 +116,7 @@ export const testnetTokens = defineTokens({
     18,
     'REACT',
     'ReactSwap',
-    'https://reactswap/com',
+    'https://reactswap.com',
   ),
   usdc: new Token(
     ROPSTEN,
@@ -170,6 +170,7 @@ export const testnetTokens = defineTokens({
 } as const)
 
 const tokens = () => {
+  // todo chainid
   const chainId = process.env.NEXT_PUBLIC_CHAIN_ID
 
   // If testnet - return list comprised of testnetTokens wherever they exist, and mainnetTokens where they don't

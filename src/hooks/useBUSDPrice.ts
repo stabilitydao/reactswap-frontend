@@ -1,5 +1,5 @@
 import { ChainId, Currency, currencyEquals, JSBI, Price } from '@reactswap/sdk'
-import tokens, { mainnetTokens } from 'config/constants/tokens'
+import tokens, { mainnetTokens, testnetTokens } from 'config/constants/tokens'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useMemo } from 'react'
 import { multiplyPriceByAmount } from 'utils/prices'
@@ -7,6 +7,7 @@ import { wrappedCurrency } from '../utils/wrappedCurrency'
 import { PairState, usePairs } from './usePairs'
 
 const BUSD_MAINNET = mainnetTokens.usdc
+const BUSD_ROPSTEN = testnetTokens.usdc
 const { weth: WBNB } = tokens
 
 /**
@@ -19,11 +20,14 @@ export default function useBUSDPrice(currency?: Currency): Price | undefined {
   const tokenPairs: [Currency | undefined, Currency | undefined][] = useMemo(
     () => [
       [chainId && wrapped && currencyEquals(WBNB, wrapped) ? undefined : currency, chainId ? WBNB : undefined],
-      [wrapped?.equals(BUSD_MAINNET) ? undefined : wrapped, chainId === ChainId.MAINNET ? BUSD_MAINNET : undefined],
+      [wrapped?.equals(BUSD_MAINNET) ? undefined : wrapped, chainId === ChainId.ROPSTEN ? BUSD_ROPSTEN : undefined],
       [chainId ? WBNB : undefined, chainId === ChainId.MAINNET ? BUSD_MAINNET : undefined],
     ],
     [chainId, currency, wrapped],
   )
+
+  // todo chainid
+  // console.log(tokenPairs)
   const [[ethPairState, ethPair], [busdPairState, busdPair], [busdEthPairState, busdEthPair]] = usePairs(tokenPairs)
 
   return useMemo(() => {
@@ -52,7 +56,7 @@ export default function useBUSDPrice(currency?: Currency): Price | undefined {
     if (
       busdPairState === PairState.EXISTS &&
       busdPair &&
-      busdPair.reserveOf(BUSD_MAINNET).greaterThan(ethPairETHBUSDValue)
+      busdPair.reserveOf(BUSD_ROPSTEN).greaterThan(ethPairETHBUSDValue)
     ) {
       const price = busdPair.priceOf(wrapped)
       return new Price(currency, BUSD_MAINNET, price.denominator, price.numerator)

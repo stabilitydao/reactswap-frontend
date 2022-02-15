@@ -79,14 +79,13 @@ const farms: SerializedFarmConfig[] = [
     isCommunity: false,
   },
   /* {
-    pid: 251,
-    lpSymbol: 'CAKE-BNB LP',
+    pid: 8,
+    lpSymbol: 'REACT-ETH LP',
     lpAddresses: {
-      97: '0x3ed8936cAFDF85cfDBa29Fbe5940A5b0524824F4',
-      56: '0x0eD7e52944161450477ee417DE9Cd3a859b14fD0',
+      3: '0x1b503906176202325940B7Ac211254d1B305D52D',
     },
-    token: serializedTokens.cake,
-    quoteToken: serializedTokens.wbnb,
+    token: serializedTokens.react,
+    quoteToken: serializedTokens.weth,
   }, */
 
   /**
