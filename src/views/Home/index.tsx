@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex } from '@reactswap/uikit'
+import { CheckmarkIcon, Flex, Heading, Text } from '@reactswap/uikit'
 import styled from 'styled-components'
 import PageSection from 'components/PageSection'
 import { useWeb3React } from '@web3-react/core'
@@ -88,6 +88,41 @@ const Home: React.FC = () => {
         <HomeBanner account={account} />
         <Hero />
       </StyledHeroSection>
+      <PageSection
+        innerProps={{ style: HomeSectionContainerStyles }}
+        background={
+          theme.isDark
+            ? 'linear-gradient(180deg, #1d1630 0%, #091115 100%)'
+            : 'linear-gradient(180deg, #6FB6F1 0%, #EAF2F6 100%)'
+        }
+        index={2}
+        hasCurvedDivider={false}
+      >
+        <div>
+          <Heading scale="xxl" color="secondary" mb="24px">
+            Roadmap
+          </Heading>
+          <Flex flexDirection="column">
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />Uniswap-V2 based AMM</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />Farms</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />React Pools</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />X-Stake Bar</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />RFI / TAX</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5}><CheckmarkIcon color="textSubtle" mr={1} />Ropsten testnet pre-alpha</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Mumbai testnet alpha</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Polygon mainnet deployment</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">TGE</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Liquidity lock</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Liquidity migration</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Limit orders</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Isolated lending & leverage</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Initial farm offering launchpad</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Trading competitions (profiles, teams)</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Prediction</Text>
+            <Text fontSize="22px" color="textSubtle" lineHeight={1.5} pl="26px">Lottery</Text>
+          </Flex>
+        </div>
+      </PageSection>
       {/* <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
