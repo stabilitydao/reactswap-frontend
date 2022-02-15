@@ -100,7 +100,7 @@ const Hero = () => {
       <Flex
         position="relative"
         flexDirection={['column-reverse', null, null, 'row']}
-        alignItems={['flex-end', null, null, 'center']}
+        alignItems={['center', null, null, 'center']}
         justifyContent="center"
         mt={[account ? '280px' : '50px', null, 0]}
         id="homepage-hero"
@@ -131,7 +131,7 @@ const Hero = () => {
               {/*<source type="image/webp" srcSet={getSrcSet(imagePath, imageSrc, '.webp')} />*/}
               {/*<source type="image/png" srcSet={getSrcSet(imagePath, imageSrc)} />*/}
               {/*<img src={`${imagePath}${imageSrc}.png`} alt={t('Lunar bunny')} />*/}
-              <img src="/logo.png" alt={t('Lunar bunny')} />
+              <img src="/logo.png" alt={t('Lunar react')} />
             </picture>
           </BunnyWrapper>
           <StarsWrapper>

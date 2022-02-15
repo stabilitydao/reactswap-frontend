@@ -32,7 +32,7 @@ const SalesSection: React.FC<SalesSectionProps> = (props) => {
     <Flex flexDirection="column">
       <Flex
         flexDirection={['column-reverse', null, null, reverse ? 'row-reverse' : 'row']}
-        alignItems={['flex-end', null, null, 'center']}
+        alignItems={['center', null, null, 'center']}
         justifyContent="center"
       >
         <Flex
@@ -67,7 +67,13 @@ const SalesSection: React.FC<SalesSectionProps> = (props) => {
                 {t(secondaryButton.text)}
               </Link>
             ) : (
-              <RouterLink to={secondaryButton.to}>{t(secondaryButton.text)}</RouterLink>
+              <Button mr="16px">
+                <RouterLink to={secondaryButton.to}>
+                  <Text color="card" bold fontSize="16px">
+                    {t(secondaryButton.text)}
+                  </Text>
+                </RouterLink>
+              </Button>
             )}
           </Flex>
         </Flex>

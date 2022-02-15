@@ -2,75 +2,75 @@ import { SalesSectionProps } from '.'
 
 export const swapSectionData: SalesSectionProps = {
   headingText: 'Trade anything. No registration, no hassle.',
-  bodyText: 'Trade any token on Binance Smart Chain in seconds, just by connecting your wallet.',
+  bodyText: 'Trade any token on Polygon (Matic) in seconds, just by connecting your wallet.',
   reverse: false,
   primaryButton: {
     to: '/swap',
-    text: 'Trade Now',
+    text: 'Swap',
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/',
-    text: 'Learn',
-    external: true,
+    to: '/liquidity',
+    text: 'Provide Liquidity',
+    external: false,
   },
   images: {
     path: '/images/home/trade/',
     attributes: [
-      { src: 'BNB', alt: 'BNB token' },
-      { src: 'BTC', alt: 'BTC token' },
-      { src: 'CAKE', alt: 'CAKE token' },
+      { src: 'PROFIT', alt: 'PROFIT token' },
+      { src: 'BTC', alt: 'WBTC token' },
+      { src: 'REACT', alt: 'REACT token' },
     ],
   },
 }
 
 export const earnSectionData: SalesSectionProps = {
   headingText: 'Earn passive income with crypto.',
-  bodyText: 'PancakeSwap makes it easy to make your crypto work for you.',
+  bodyText: 'ReactSwap makes it easy to make your crypto work for you.',
   reverse: true,
   primaryButton: {
     to: '/farms',
-    text: 'Explore',
+    text: 'Explore Farms',
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/products/yield-farming',
-    text: 'Learn',
-    external: true,
+    to: '/pools',
+    text: 'Explore React Pools',
+    external: false,
   },
   images: {
     path: '/images/home/earn/',
     attributes: [
       { src: 'pie', alt: 'Pie chart' },
       { src: 'stonks', alt: 'Stocks chart' },
-      { src: 'folder', alt: 'Folder with cake token' },
+      // { src: 'folder', alt: 'Folder with cake token' },
     ],
   },
 }
 
 export const cakeSectionData: SalesSectionProps = {
-  headingText: 'CAKE makes our world go round.',
+  headingText: 'REACT makes our world go round.',
   bodyText:
-    'CAKE token is at the heart of the PancakeSwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
+    'REACT token is at the heart of the ReactSwap ecosystem. Buy it, farm it, spend it, stake it... heck, you can even stake and vote with it!',
   reverse: false,
   primaryButton: {
-    to: '/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
-    text: 'Buy CAKE',
+    to: '/swap',
+    text: 'Buy REACT',
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/tokenomics/cake',
-    text: 'Learn',
-    external: true,
+    to: '/xstake',
+    text: 'Visit X-Stake Bar',
+    external: false,
   },
 
   images: {
     path: '/images/home/cake/',
     attributes: [
-      { src: 'bottom-right', alt: 'Small 3d pancake' },
-      { src: 'top-right', alt: 'Small 3d pancake' },
-      { src: 'coin', alt: 'CAKE token' },
-      { src: 'top-left', alt: 'Small 3d pancake' },
+      // { src: 'bottom-right', alt: 'Small 3d pancake' },
+      // { src: 'top-right', alt: 'Small 3d pancake' },
+      { src: 'REACT', alt: 'REACT token' },
+      // { src: 'top-left', alt: 'Small 3d pancake' },
     ],
   },
 }

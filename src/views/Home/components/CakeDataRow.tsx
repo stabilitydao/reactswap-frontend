@@ -41,7 +41,7 @@ const Grid = styled.div`
   }
 `
 
-const emissionsPerBlock = 14.25
+const emissionsPerBlock = 1.0
 
 const CakeDataRow = () => {
   const { t } = useTranslation()
@@ -62,14 +62,14 @@ const CakeDataRow = () => {
           <Skeleton height={24} width={126} my="4px" />
         )}
       </Flex>
-      <StyledColumn>
+      {/* <StyledColumn>
         <Text color="textSubtle">{t('Burned to date')}</Text>
         {burnedBalance ? (
           <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={burnedBalance} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
-      </StyledColumn>
+      </StyledColumn> */}
       <StyledColumn noMobileBorder>
         <Text color="textSubtle">{t('Market cap')}</Text>
         {mcap?.gt(0) && mcapString ? (
