@@ -1,9 +1,10 @@
 import { TokenAmount, Pair, Currency } from '@reactswap/sdk'
-import { useMemo } from 'react'
+import { useMemo, useContext } from 'react'
 import IUniswapV2Pair from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { Interface } from '@ethersproject/abi'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-
+import { useWeb3React } from '@web3-react/core'
+import { currentChainIdContext } from 'contexts/chainId'
 import { useMultipleContractSingleData } from '../state/multicall/hooks'
 import { wrappedCurrency } from '../utils/wrappedCurrency'
 
@@ -17,7 +18,8 @@ export enum PairState {
 }
 
 export function usePairs(currencies: [Currency | undefined, Currency | undefined][]): [PairState, Pair | null][] {
-  const { chainId } = useActiveWeb3React()
+  const { library, chainId, active } = useWeb3React()
+  const { currentChainId, setChainId } = useContext(currentChainIdContext)
 
   const tokens = useMemo(
     () =>
@@ -28,13 +30,13 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
     [chainId, currencies],
   )
 
-  const pairAddresses = useMemo(
-    () =>
+  const pairAddresses = useMemo(() => {
+    if (active && currentChainId === chainId) {
       tokens.map(([tokenA, tokenB]) => {
         return tokenA && tokenB && !tokenA.equals(tokenB) ? Pair.getAddress(tokenA, tokenB) : undefined
-      }),
-    [tokens],
-  )
+      })
+    }
+  }, [tokens])
 
   const results = useMultipleContractSingleData(pairAddresses, PAIR_INTERFACE, 'getReserves')
 

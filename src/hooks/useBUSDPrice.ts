@@ -1,7 +1,9 @@
 import { ChainId, Currency, currencyEquals, JSBI, Price } from '@reactswap/sdk'
 import tokens, { mainnetTokens, testnetTokens } from 'config/constants/tokens'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useMemo } from 'react'
+import { useWeb3React } from '@web3-react/core'
+import { currentChainIdContext } from 'contexts/chainId'
+import { useMemo, useContext } from 'react'
 import { multiplyPriceByAmount } from 'utils/prices'
 import { wrappedCurrency } from '../utils/wrappedCurrency'
 import { PairState, usePairs } from './usePairs'
@@ -15,7 +17,8 @@ const { weth: WBNB } = tokens
  * @param currency currency to compute the BUSD price of
  */
 export default function useBUSDPrice(currency?: Currency): Price | undefined {
-  const { chainId } = useActiveWeb3React()
+  const { currentChainId, setChainId } = useContext(currentChainIdContext)
+  const { library, chainId, active } = useWeb3React()
   const wrapped = wrappedCurrency(currency, chainId)
   const tokenPairs: [Currency | undefined, Currency | undefined][] = useMemo(
     () => [
@@ -28,7 +31,9 @@ export default function useBUSDPrice(currency?: Currency): Price | undefined {
 
   // todo chainid
   // console.log(tokenPairs)
-  const [[ethPairState, ethPair], [busdPairState, busdPair], [busdEthPairState, busdEthPair]] = usePairs(tokenPairs)
+  if (active && currentChainId === chainId) {
+    const [[ethPairState, ethPair], [busdPairState, busdPair], [busdEthPairState, busdEthPair]] = usePairs(tokenPairs)
+  }
 
   return useMemo(() => {
     if (!currency || !wrapped || !chainId) {
