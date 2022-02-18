@@ -11,7 +11,7 @@ import { ToastDescriptionWithTx } from 'components/Toast'
 import { ethers, Contract } from 'ethers'
 import useToast from 'hooks/useToast'
 import { getXStakeAddress } from 'utils/addressHelpers'
-
+import ConnectWalletButton from 'components/ConnectWalletButton'
 const StakeInput = styled.input`
   outline: none;
   width: 100%;
@@ -221,6 +221,13 @@ const Voting = () => {
       <Page>
         <Flex justifyContent="center">
           <Flex flexDirection="column" width={['100%', '500px']}>
+            {!active && (
+              <Wrapper style={{ marginBottom: '20px' }}>
+                <Flex width="100%">
+                  <ConnectWalletButton mr="8px" width="100%" />
+                </Flex>
+              </Wrapper>
+            )}
             <Wrapper style={{ marginBottom: '20px' }}>
               <Flex width="100%">
                 <Button
@@ -233,75 +240,79 @@ const Voting = () => {
                 </Button>
               </Flex>
             </Wrapper>
-            <Wrapper style={{ marginBottom: '20px' }}>
-              <Flex mb="10px" width="100%">
-                <BalanceTab>Balance: 100 React</BalanceTab>
-                <BalanceTab>Staked: 200 React</BalanceTab>
-              </Flex>
-            </Wrapper>
-            <Wrapper>
-              <Flex mb="10px" width="100%">
-                <Button
-                  width="100%"
-                  margin="2px"
-                  onClick={() => {
-                    setactionType(true)
-                  }}
-                >
-                  Stake
-                </Button>
-                <Button
-                  width="100%"
-                  margin="2px"
-                  onClick={() => {
-                    setactionType(false)
-                  }}
-                >
-                  Unstake
-                </Button>
-              </Flex>
-              <Flex mb="15px" width="100%" padding="2px">
-                <Flex display="flex" justifyContent="space-between" width="100%">
-                  <Heading color="white">{actionType ? 'Stake' : 'UnStake'}</Heading>
-                  <Tag variant="secondary" outline mr="8px">
-                    1 xREACT = {stakedReact / xReactSupply} REACT
-                  </Tag>
+            {active && (
+              <Wrapper style={{ marginBottom: '20px' }}>
+                <Flex mb="10px" width="100%">
+                  <BalanceTab>Balance: 100 React</BalanceTab>
+                  <BalanceTab>Staked: 200 React</BalanceTab>
                 </Flex>
-              </Flex>
-              {actionType ? (
-                <Flex mb="15px" flexDirection="column" width="100%" padding="2px">
-                  <InputWrapper>
-                    <StakeInput
-                      type="number"
-                      placeholder="React"
-                      onChange={(e) => {
-                        setStake(e.target.value)
-                      }}
-                    />
-                    <StakeMax>Max</StakeMax>
-                  </InputWrapper>
-                  {isApproved ? (
-                    <Button onClick={handleStake}>Stake</Button>
-                  ) : (
-                    <Button onClick={handleApprove}>Approve</Button>
-                  )}
+              </Wrapper>
+            )}
+            {active && (
+              <Wrapper>
+                <Flex mb="10px" width="100%">
+                  <Button
+                    width="100%"
+                    margin="2px"
+                    onClick={() => {
+                      setactionType(true)
+                    }}
+                  >
+                    Stake
+                  </Button>
+                  <Button
+                    width="100%"
+                    margin="2px"
+                    onClick={() => {
+                      setactionType(false)
+                    }}
+                  >
+                    Unstake
+                  </Button>
                 </Flex>
-              ) : (
-                <Flex mb="15px" flexDirection="column" width="100%" padding="2px">
-                  <InputWrapper>
-                    <UnStakeInput
-                      type="number"
-                      placeholder="xReact"
-                      onChange={(e) => {
-                        setUnStake(e.target.value)
-                      }}
-                    />
-                    <StakeMax>Max</StakeMax>
-                  </InputWrapper>
-                  <Button onClick={handleUnstake}>Unstake</Button>
+                <Flex mb="15px" width="100%" padding="2px">
+                  <Flex display="flex" justifyContent="space-between" width="100%">
+                    <Heading color="white">{actionType ? 'Stake' : 'UnStake'}</Heading>
+                    <Tag variant="secondary" outline mr="8px">
+                      1 xREACT = {stakedReact / xReactSupply} REACT
+                    </Tag>
+                  </Flex>
                 </Flex>
-              )}
-            </Wrapper>
+                {actionType ? (
+                  <Flex mb="15px" flexDirection="column" width="100%" padding="2px">
+                    <InputWrapper>
+                      <StakeInput
+                        type="number"
+                        placeholder="React"
+                        onChange={(e) => {
+                          setStake(e.target.value)
+                        }}
+                      />
+                      <StakeMax>Max</StakeMax>
+                    </InputWrapper>
+                    {isApproved ? (
+                      <Button onClick={handleStake}>Stake</Button>
+                    ) : (
+                      <Button onClick={handleApprove}>Approve</Button>
+                    )}
+                  </Flex>
+                ) : (
+                  <Flex mb="15px" flexDirection="column" width="100%" padding="2px">
+                    <InputWrapper>
+                      <UnStakeInput
+                        type="number"
+                        placeholder="xReact"
+                        onChange={(e) => {
+                          setUnStake(e.target.value)
+                        }}
+                      />
+                      <StakeMax>Max</StakeMax>
+                    </InputWrapper>
+                    <Button onClick={handleUnstake}>Unstake</Button>
+                  </Flex>
+                )}
+              </Wrapper>
+            )}
           </Flex>
         </Flex>
       </Page>
