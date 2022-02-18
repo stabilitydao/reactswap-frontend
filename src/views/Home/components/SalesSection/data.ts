@@ -49,7 +49,7 @@ export const earnSectionData: SalesSectionProps = {
 }
 
 export const cakeSectionData: SalesSectionProps = {
-  headingText: 'REACT makes our world go round.',
+  headingText: 'REACT makes your crypto swap sweat free.',
   bodyText:
     'REACT token is at the heart of the ReactSwap ecosystem. Buy it, farm it, spend it, stake it... heck, you can even stake and vote with it!',
   reverse: false,

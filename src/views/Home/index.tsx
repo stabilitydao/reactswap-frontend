@@ -110,6 +110,7 @@ const Home: React.FC = () => {
             <Text fontSize="22px" color="text" lineHeight={1.5}><CheckmarkIcon color="text" mr={1} />RFI / TAX</Text>
             <Text fontSize="22px" color="text" lineHeight={1.5}><CheckmarkIcon color="text" mr={1} />Ropsten testnet pre-alpha</Text>
             <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Subgraph and analytics</Text>
+            <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Price chart</Text>
             <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Mumbai testnet alpha</Text>
             <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">Polygon mainnet deployment</Text>
             <Text fontSize="22px" color="text" lineHeight={1.5} pl="26px">TGE</Text>
