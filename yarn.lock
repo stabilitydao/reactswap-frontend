@@ -1637,10 +1637,10 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@reactswap/uikit@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@reactswap/uikit/-/uikit-1.0.9.tgz#eb36639982d7a03c8c8dc3f0ea0d036ecf716e59"
-  integrity sha512-QGrVgxpOsPrteuxQemV9RUJvsfufIPK+yXH+QngHXsn68lcUefkSGKWuPk9hT9DoQ8+mokCu75HBgaw1pt3qCA==
+"@reactswap/uikit@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@reactswap/uikit/-/uikit-1.0.11.tgz#ac55aec7a42daaf00666eea8eb37c77bb7b00ca1"
+  integrity sha512-8DsEwxXlxZLc+CKxPexkKigWnUD5coHUG3R4v4QpMO7FMIjn8mBGkW51lN74+1U6jmWnLi16eefiAaf1iOXDDA==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/styled-system" "^5.1.10"
