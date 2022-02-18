@@ -8,8 +8,10 @@ import { multiplyPriceByAmount } from 'utils/prices'
 import { wrappedCurrency } from '../utils/wrappedCurrency'
 import { PairState, usePairs } from './usePairs'
 
-const BUSD_MAINNET = mainnetTokens.usdc
-const BUSD_ROPSTEN = testnetTokens.usdc
+const BUSD = {
+  137: mainnetTokens.usdc,
+  3: testnetTokens.usdc,
+}
 const { weth: WBNB } = tokens
 
 /**
@@ -20,36 +22,36 @@ export default function useBUSDPrice(currency?: Currency): Price | undefined {
   const { currentChainId, setChainId } = useContext(currentChainIdContext)
   const { library, chainId, active } = useWeb3React()
   const wrapped = wrappedCurrency(currency, chainId)
+  const BUSD_NETWORK = BUSD[chainId] ? BUSD[chainId] : undefined
+  
   const tokenPairs: [Currency | undefined, Currency | undefined][] = useMemo(
     () => [
       [chainId && wrapped && currencyEquals(WBNB, wrapped) ? undefined : currency, chainId ? WBNB : undefined],
-      [wrapped?.equals(BUSD_MAINNET) ? undefined : wrapped, chainId === ChainId.ROPSTEN ? BUSD_ROPSTEN : undefined],
-      [chainId ? WBNB : undefined, chainId === ChainId.MAINNET ? BUSD_MAINNET : undefined],
+      [BUSD_NETWORK && wrapped?.equals(BUSD_NETWORK) ? undefined : wrapped, BUSD_NETWORK],
+      [chainId ? WBNB : undefined, BUSD_NETWORK],
     ],
-    [chainId, currency, wrapped],
+    [chainId, currency, wrapped, BUSD_NETWORK],
   )
 
   // todo chainid
   // console.log(tokenPairs)
-  if (active && currentChainId === chainId) {
-    const [[ethPairState, ethPair], [busdPairState, busdPair], [busdEthPairState, busdEthPair]] = usePairs(tokenPairs)
-  }
+  const [[ethPairState, ethPair], [busdPairState, busdPair], [busdEthPairState, busdEthPair]] = usePairs(tokenPairs)
 
   return useMemo(() => {
-    if (!currency || !wrapped || !chainId) {
+    if (!currency || !wrapped || !chainId || !BUSD_NETWORK) {
       return undefined
     }
     // handle weth/eth
     if (wrapped.equals(WBNB)) {
       if (busdPair) {
         const price = busdPair.priceOf(WBNB)
-        return new Price(currency, BUSD_MAINNET, price.denominator, price.numerator)
+        return new Price(currency, BUSD_NETWORK, price.denominator, price.numerator)
       }
       return undefined
     }
     // handle busd
-    if (wrapped.equals(BUSD_MAINNET)) {
-      return new Price(BUSD_MAINNET, BUSD_MAINNET, '1', '1')
+    if (wrapped.equals(BUSD_NETWORK)) {
+      return new Price(BUSD_NETWORK, BUSD_NETWORK, '1', '1')
     }
 
     const ethPairETHAmount = ethPair?.reserveOf(WBNB)
@@ -61,22 +63,22 @@ export default function useBUSDPrice(currency?: Currency): Price | undefined {
     if (
       busdPairState === PairState.EXISTS &&
       busdPair &&
-      busdPair.reserveOf(BUSD_ROPSTEN).greaterThan(ethPairETHBUSDValue)
+      busdPair.reserveOf(BUSD_NETWORK).greaterThan(ethPairETHBUSDValue)
     ) {
       const price = busdPair.priceOf(wrapped)
-      return new Price(currency, BUSD_MAINNET, price.denominator, price.numerator)
+      return new Price(currency, BUSD_NETWORK, price.denominator, price.numerator)
     }
     if (ethPairState === PairState.EXISTS && ethPair && busdEthPairState === PairState.EXISTS && busdEthPair) {
-      if (busdEthPair.reserveOf(BUSD_MAINNET).greaterThan('0') && ethPair.reserveOf(WBNB).greaterThan('0')) {
-        const ethBusdPrice = busdEthPair.priceOf(BUSD_MAINNET)
+      if (busdEthPair.reserveOf(BUSD_NETWORK).greaterThan('0') && ethPair.reserveOf(WBNB).greaterThan('0')) {
+        const ethBusdPrice = busdEthPair.priceOf(BUSD_NETWORK)
         const currencyEthPrice = ethPair.priceOf(WBNB)
         const busdPrice = ethBusdPrice.multiply(currencyEthPrice).invert()
-        return new Price(currency, BUSD_MAINNET, busdPrice.denominator, busdPrice.numerator)
+        return new Price(currency, BUSD_NETWORK, busdPrice.denominator, busdPrice.numerator)
       }
     }
 
     return undefined
-  }, [chainId, currency, ethPair, ethPairState, busdEthPair, busdEthPairState, busdPair, busdPairState, wrapped])
+  }, [chainId, currency, ethPair, ethPairState, busdEthPair, busdEthPairState, busdPair, busdPairState, wrapped, BUSD_NETWORK])
 }
 
 export const useCakeBusdPrice = (): Price | undefined => {

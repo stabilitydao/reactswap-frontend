@@ -31,12 +31,11 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
   )
 
   const pairAddresses = useMemo(() => {
-    if (active && currentChainId === chainId) {
-      tokens.map(([tokenA, tokenB]) => {
-        return tokenA && tokenB && !tokenA.equals(tokenB) ? Pair.getAddress(tokenA, tokenB) : undefined
-      })
-    }
-  }, [tokens])
+    return tokens.map(([tokenA, tokenB]) => {
+      // todo chainid to pair getAddress
+      return tokenA && tokenB && !tokenA.equals(tokenB) && tokenA.chainId === 3 && tokenB.chainId === 3 && currentChainId === 3 ? Pair.getAddress(tokenA, tokenB) : undefined
+    })
+  }, [tokens, currentChainId])
 
   const results = useMultipleContractSingleData(pairAddresses, PAIR_INTERFACE, 'getReserves')
 
