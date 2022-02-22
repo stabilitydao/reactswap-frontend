@@ -66,6 +66,7 @@ const Voting = () => {
   const [xReactSupply, setxReactSupply] = useState<any>()
   const [Stake, setStake] = useState<string | null>(null)
   const [UnStake, setUnStake] = useState<string | null>(null)
+  const [ReactBalance, setReactBalance] = useState<string | null>(null)
   const XStakeContract = useXStakeContract()
   const ReactTokenContract = useReactTokenContract()
   const { toastSuccess, toastError } = useToast()
@@ -79,6 +80,10 @@ const Voting = () => {
   const getXReactSupply = async () => {
     const xreactsupply = await callWithGasPrice(XStakeContract, 'totalSupply')
     setxReactSupply(ethers.utils.formatEther(xreactsupply.toString()))
+  }
+  const getReactBalance = async () => {
+    const reactBalance = await callWithGasPrice(ReactTokenContract, 'balanceOf', [account])
+    setReactBalance(ethers.utils.formatEther(reactBalance.toString()))
   }
   const handleApprove = async () => {
     if (active) {
@@ -198,8 +203,9 @@ const Voting = () => {
     handleisApproved()
     getStakedReact()
     getXReactSupply()
+    getReactBalance()
   })
-
+  console.log(ReactBalance)
   return (
     <>
       <PageMeta />
@@ -243,7 +249,7 @@ const Voting = () => {
             {active && (
               <Wrapper style={{ marginBottom: '20px' }}>
                 <Flex mb="10px" width="100%">
-                  <BalanceTab>Balance: 100 React</BalanceTab>
+                  <BalanceTab>Balance: {ReactBalance ?? '-'} React</BalanceTab>
                   <BalanceTab>Staked: 200 React</BalanceTab>
                 </Flex>
               </Wrapper>
