@@ -12,6 +12,7 @@ import { ethers, Contract } from 'ethers'
 import useToast from 'hooks/useToast'
 import { getXStakeAddress } from 'utils/addressHelpers'
 import ConnectWalletButton from 'components/ConnectWalletButton'
+
 const StakeInput = styled.input`
   outline: none;
   width: 100%;
