@@ -103,6 +103,17 @@ const CustomToggle = styled.div`
     display: none;
   }
 `
+const Sidebar = styled.aside<{ isDark: boolean; isSide: boolean }>`
+  width: 360px;
+  background-color: ${({ isDark }) => (isDark ? 'black' : 'white')};
+  @media (max-width: 1024px) {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    left: ${({ isSide }) => (isSide ? '0px' : '-360px')};
+  }
+`
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const { active, chainId } = useWeb3React()
@@ -114,17 +125,6 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
     flex-grow: 1;
     height: 100vh;
     overflow: auto;
-  `
-  const Sidebar = styled.aside`
-    width: 360px;
-    background-color: ${isDark ? 'black' : 'white'};
-    @media (max-width: 1024px) {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      z-index: 10;
-      left: ${isSide ? '0px' : '-360px'};
-    }
   `
   const CustomMenu = styled.nav`
     background-color: ${isDark ? 'black' : 'white'};
@@ -140,7 +140,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   return (
     <ErrorBoundary>
       <CustomLayout>
-        <Sidebar>Hello</Sidebar>
+        <Sidebar isDark={isDark} isSide={isSide}>Hello</Sidebar>
         <ModifiedLayout>
           <CustomMenu>
             <CustomToggle>
