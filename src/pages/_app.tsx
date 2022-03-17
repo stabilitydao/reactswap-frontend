@@ -114,7 +114,7 @@ const Sidebar = styled.aside<{ isDark: boolean; isSide: boolean }>`
     position: fixed;
     top: 0;
     bottom: 0;
-    z-index: 10;
+    z-index: 20;
     left: ${({ isSide }) => (isSide ? '0px' : '-360px')};
     transition: left 0.4s ease-out;
   }
@@ -150,6 +150,17 @@ const MLink = styled.a<{ isDark: boolean }>`
     background-color: #7d0bda;
     transition: 0.4s background-color;
   }
+`
+
+const BurgerItem = styled.div`
+  width: 28px;
+  height: 4px;
+  margin: 4px 0px;
+  background-color: black;
+`
+const Burger = styled.div`
+  padding: 2px;
+  cursor: pointer;
 `
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const { active, chainId } = useWeb3React()
@@ -214,12 +225,15 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         <ModifiedLayout>
           <CustomMenu isDark={isDark}>
             <CustomToggle>
-              <Toggle
-                checked={isSide}
-                onChange={() => {
+              <Burger
+                onClick={() => {
                   setisSide(!isSide)
                 }}
-              />
+              >
+                <BurgerItem />
+                <BurgerItem />
+                <BurgerItem />
+              </Burger>
             </CustomToggle>
           </CustomMenu>
           <Layout>
