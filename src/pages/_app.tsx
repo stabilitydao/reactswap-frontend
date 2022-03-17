@@ -1,5 +1,9 @@
-import { ResetCSS, Button, NotificationDot, Image, Toggle } from '@reactswap/uikit'
+import { ResetCSS, Button, NotificationDot, Image, Toggle, Heading, Flex } from '@reactswap/uikit'
 import Script from 'next/script'
+import Link from 'next/link'
+import { AiFillHome, AiFillContainer } from 'react-icons/ai'
+import { FaExchangeAlt, FaHandHoldingWater } from 'react-icons/fa'
+import { GiFarmTractor, GiStakeHammer } from 'react-icons/gi'
 import BigNumber from 'bignumber.js'
 import { useThemeManager } from 'state/user/hooks'
 import EasterEgg from 'components/EasterEgg'
@@ -104,45 +108,111 @@ const CustomToggle = styled.div`
   }
 `
 const Sidebar = styled.aside<{ isDark: boolean; isSide: boolean }>`
-  width: 360px;
-  background-color: ${({ isDark }) => (isDark ? 'black' : 'white')};
+  width: 300px;
+  background-color: ${({ isDark }) => (isDark ? '#27262C' : 'white')};
   @media (max-width: 1024px) {
     position: fixed;
     top: 0;
     bottom: 0;
     z-index: 10;
     left: ${({ isSide }) => (isSide ? '0px' : '-360px')};
+    transition: left 0.4s ease-out;
   }
 `
 
+const ModifiedLayout = styled.div`
+  flex-grow: 1;
+  height: 100vh;
+  overflow: auto;
+`
+
+const CustomMenu = styled.nav<{ isDark: boolean }>`
+  background-color: ${({ isDark }) => (isDark ? '#27262C' : 'white')};
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 4px 10px;
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+`
+const MLink = styled.a<{ isDark: boolean }>`
+  width: 100%;
+  color: white;
+  font-size: 1.5rem;
+  background-color: #9c30f4;
+  padding: 16px 16px;
+  display: flex;
+  column-gap: 4px;
+  margin: 5px 0px;
+  &:hover {
+    background-color: #7d0bda;
+    transition: 0.4s background-color;
+  }
+`
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const { active, chainId } = useWeb3React()
   const [isSide, setisSide] = useState(false)
   const [isDark, toggleTheme] = useThemeManager()
   // Use the layout defined at the page level, if available
   const Layout = Component.Layout || Fragment
-  const ModifiedLayout = styled.div`
-    flex-grow: 1;
-    height: 100vh;
-    overflow: auto;
-  `
-  const CustomMenu = styled.nav`
-    background-color: ${isDark ? 'black' : 'white'};
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    padding: 4px 10px;
-    position: sticky;
-    top: 0px;
-    z-index: 10;
-  `
   return (
     <ErrorBoundary>
       <CustomLayout>
-        <Sidebar isDark={isDark} isSide={isSide}>Hello</Sidebar>
+        <Sidebar isDark={isDark} isSide={isSide}>
+          <Flex justifyContent="center" pt="10px">
+            <Image src="/images/react.png" width={40} height={40} mt="5px" mr="4px" />
+            <Heading as="h3" scale="xl" color="white" mb="24px">
+              Reactswap
+            </Heading>
+          </Flex>
+          <Flex flexDirection="column">
+            {[
+              {
+                label: 'Home',
+                href: '/',
+                icon: <AiFillHome />,
+              },
+              {
+                label: 'Exchange',
+                href: '/swap',
+                icon: <FaExchangeAlt />,
+              },
+              {
+                label: 'Liquidity',
+                href: '/liquidity',
+                icon: <FaHandHoldingWater />,
+              },
+              {
+                label: 'Farms',
+                href: '/farms',
+                icon: <GiFarmTractor />,
+              },
+              {
+                label: 'Pools',
+                href: '/pools',
+                icon: <AiFillContainer />,
+              },
+              {
+                label: 'X-Stake',
+                href: '/xstake',
+                icon: <GiStakeHammer />,
+              },
+            ].map((item) => {
+              return (
+                <Link href={item.href}>
+                  <MLink isDark={isDark}>
+                    {item.icon}
+                    {item.label}
+                  </MLink>
+                </Link>
+              )
+            })}
+          </Flex>
+        </Sidebar>
         <ModifiedLayout>
-          <CustomMenu>
+          <CustomMenu isDark={isDark}>
             <CustomToggle>
               <Toggle
                 checked={isSide}
@@ -152,11 +222,11 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
               />
             </CustomToggle>
           </CustomMenu>
-          {/* <Menu> */}
           <Layout>
+            {/* <Menu> */}
             <Component {...pageProps} />
+            {/* </Menu> */}
           </Layout>
-          {/* </Menu> */}
         </ModifiedLayout>
       </CustomLayout>
       <EasterEgg iterations={2} />
