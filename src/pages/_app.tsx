@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { ResetCSS, Button, NotificationDot, Image, Toggle, Heading, Flex } from '@reactswap/uikit'
 import Script from 'next/script'
 import Link from 'next/link'
@@ -31,7 +32,7 @@ import ErrorBoundary from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
-import { useRouter } from 'next/router'
+
 // This config is required for number formatting
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
