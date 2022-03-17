@@ -148,7 +148,7 @@ const MLink = styled.a<{ isDark: boolean }>`
   margin: 5px 0px;
   &:hover {
     background-color: #7d0bda;
-    transition: 0.4s background-color;
+    transition: 0.25s background-color;
   }
 `
 
@@ -157,6 +157,15 @@ const BurgerItem = styled.div`
   height: 4px;
   margin: 4px 0px;
   background-color: black;
+`
+const SidebarBack = styled.div<{ isSide: boolean }>`
+  position: fixed;
+  display: ${({ isSide }) => (isSide ? 'block' : 'none')};
+  inset: 0;
+  z-index: 19;
+  background-color: black;
+  opacity: 0.5;
+
 `
 const Burger = styled.div`
   padding: 2px;
@@ -222,6 +231,12 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
             })}
           </Flex>
         </Sidebar>
+        <SidebarBack
+          isSide={isSide}
+          onClick={() => {
+            setisSide(!isSide)
+          }}
+        />
         <ModifiedLayout>
           <CustomMenu isDark={isDark}>
             <CustomToggle>
