@@ -31,7 +31,7 @@ import ErrorBoundary from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
-
+import { useRouter } from 'next/router'
 // This config is required for number formatting
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -110,6 +110,7 @@ const CustomToggle = styled.div`
 const Sidebar = styled.aside<{ isDark: boolean; isSide: boolean }>`
   width: 300px;
   background-color: ${({ isDark }) => (isDark ? '#27262C' : 'white')};
+  cursor: pointer;
   @media (max-width: 1024px) {
     position: fixed;
     top: 0;
@@ -137,17 +138,17 @@ const CustomMenu = styled.nav<{ isDark: boolean }>`
   top: 0px;
   z-index: 10;
 `
-const MLink = styled.a<{ isDark: boolean }>`
+const MLink = styled.a<{ isDark: boolean; activeRoute: boolean }>`
   width: 100%;
   color: white;
   font-size: 1.5rem;
-  background-color: #9c30f4;
+  background-color: ${({ activeRoute }) => (activeRoute ? '#450679' : '#9c30f4')};
   padding: 16px 16px;
   display: flex;
   column-gap: 4px;
   margin: 5px 0px;
   &:hover {
-    background-color: #7d0bda;
+    background-color: #450679;
     transition: 0.25s background-color;
   }
 `
@@ -165,13 +166,13 @@ const SidebarBack = styled.div<{ isSide: boolean }>`
   z-index: 19;
   background-color: black;
   opacity: 0.5;
-
 `
 const Burger = styled.div`
   padding: 2px;
   cursor: pointer;
 `
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const { pathname } = useRouter()
   const { active, chainId } = useWeb3React()
   const [isSide, setisSide] = useState(false)
   const [isDark, toggleTheme] = useThemeManager()
@@ -181,12 +182,20 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
     <ErrorBoundary>
       <CustomLayout>
         <Sidebar isDark={isDark} isSide={isSide}>
-          <Flex justifyContent="center" pt="10px">
-            <Image src="/images/react.png" width={40} height={40} mt="5px" mr="4px" />
-            <Heading as="h3" scale="xl" color="white" mb="24px">
-              Reactswap
-            </Heading>
-          </Flex>
+          <Link href="/">
+            <Flex
+              justifyContent="center"
+              pt="10px"
+              onClick={() => {
+                setisSide(false)
+              }}
+            >
+              <Image src="/images/react.png" width={40} height={40} mt="5px" mr="4px" />
+              <Heading as="h3" scale="xl" color="white" mb="24px">
+                Reactswap
+              </Heading>
+            </Flex>
+          </Link>
           <Flex flexDirection="column">
             {[
               {
@@ -220,9 +229,16 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
                 icon: <GiStakeHammer />,
               },
             ].map((item) => {
+              const activeRoute = pathname === item.href ?? false
               return (
                 <Link href={item.href}>
-                  <MLink isDark={isDark}>
+                  <MLink
+                    isDark={isDark}
+                    onClick={() => {
+                      setisSide(false)
+                    }}
+                    activeRoute={activeRoute}
+                  >
                     {item.icon}
                     {item.label}
                   </MLink>
@@ -234,7 +250,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         <SidebarBack
           isSide={isSide}
           onClick={() => {
-            setisSide(!isSide)
+            setisSide(false)
           }}
         />
         <ModifiedLayout>
