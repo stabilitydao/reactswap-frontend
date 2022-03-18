@@ -8,7 +8,7 @@ import { currentChainIdContext } from 'contexts/chainId'
 
 const Container = styled(Flex)`
   overflow: hidden;
-  height: 100%;
+  height: 60px;
   padding: 12px;
   align-items: center;
   background: linear-gradient(0deg, rgba(39, 38, 44, 0.4), rgba(39, 38, 44, 0.4)),

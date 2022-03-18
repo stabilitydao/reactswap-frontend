@@ -21,7 +21,7 @@ import useSentryUser from 'hooks/useSentryUser'
 import useUserAgent from 'hooks/useUserAgent'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext } from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
 import { useStore, persistor } from 'state'
 import { usePollBlockNumber } from 'state/block/hooks'
@@ -35,6 +35,8 @@ import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
 import ConnectWalletButton from '../components/ConnectWalletButton'
 import ChangeNetworkModal from '../components/Menu/GlobalSettings/ChangeNetworkModal'
+import WrongNetworkWarning from 'components/WrongNetworkWarning'
+import { currentChainIdContext } from 'contexts/chainId'
 
 // This config is required for number formatting
 BigNumber.config({
@@ -180,11 +182,10 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const { active, chainId } = useWeb3React()
   const [isSide, setisSide] = useState(false)
   const { t } = useTranslation()
+  const { currentChainId, setChainId } = useContext(currentChainIdContext)
   const [isDark, toggleTheme] = useThemeManager()
   const [onPresent1] = useModal(<ChangeNetworkModal />)
-  function handleChangeNetworkModal() {
-    onPresent1()
-  }
+
   // Use the layout defined at the page level, if available
   const Layout = Component.Layout || Fragment
   return (
@@ -263,6 +264,9 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
           }}
         />
         <ModifiedLayout>
+          {!((active ? chainId : currentChainId) === currentChainId) && active && typeof window !== 'undefined' && (
+            <WrongNetworkWarning />
+          )}
           <CustomMenu isDark={isDark}>
             <Button variant="primary" scale="md" mr="8px" onClick={onPresent1}>
               Change Network
