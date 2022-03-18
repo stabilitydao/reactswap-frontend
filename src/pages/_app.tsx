@@ -38,8 +38,6 @@ import GlobalStyle from '../style/Global'
 import ConnectWalletButton from '../components/ConnectWalletButton'
 import ChangeNetworkModal from '../components/Menu/GlobalSettings/ChangeNetworkModal'
 
-
-
 // This config is required for number formatting
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -139,6 +137,7 @@ const CustomMenu = styled.nav<{ isDark: boolean }>`
   background-color: ${({ isDark }) => (isDark ? '#27262C' : 'white')};
   height: 64px;
   display: flex;
+  justify-content: end;
   align-items: center;
   padding: 4px 10px;
   position: sticky;
@@ -270,10 +269,12 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
             <WrongNetworkWarning />
           )}
           <CustomMenu isDark={isDark}>
-            <Button variant="primary" scale="md" mr="8px" onClick={onPresent1}>
-              Change Network
-            </Button>
-            <ConnectWalletButton />
+            {active && (
+              <Button variant="primary" scale="md" mr="8px" onClick={onPresent1}>
+                Change Network
+              </Button>
+            )}
+            {!active && <ConnectWalletButton />}
             <CustomToggle>
               <Burger
                 onClick={() => {
