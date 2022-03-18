@@ -56,15 +56,15 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
       />
     )
   }
-  if (shownetworkChangeModal) {
-    return (
-      <ChangeNetworkModal
-        setshownetworkChangeModal={setshownetworkChangeModal}
-        // onDismiss={onDismiss}
-        // setShowExpertModeAcknowledgement={setShowExpertModeAcknowledgement}
-      />
-    )
-  }
+  // if (shownetworkChangeModal) {
+  //   return (
+  //     <ChangeNetworkModal
+  //       setshownetworkChangeModal={setshownetworkChangeModal}
+  //       // onDismiss={onDismiss}
+  //       // setShowExpertModeAcknowledgement={setShowExpertModeAcknowledgement}
+  //     />
+  //   )
+  // }
   function handleChangeNetworkModal() {
     if (shownetworkChangeModal) {
       setshownetworkChangeModal(false)

@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router'
-import { ResetCSS, Button, NotificationDot, Image, Toggle, Heading, Flex } from '@reactswap/uikit'
+import { ResetCSS, Button, NotificationDot, Image, Toggle, Heading, Flex, useModal } from '@reactswap/uikit'
 import Script from 'next/script'
 import Link from 'next/link'
+import { useTranslation } from 'contexts/Localization'
 import { AiFillHome, AiFillContainer } from 'react-icons/ai'
 import { FaExchangeAlt, FaHandHoldingWater } from 'react-icons/fa'
 import { GiFarmTractor, GiStakeHammer } from 'react-icons/gi'
@@ -32,6 +33,8 @@ import ErrorBoundary from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
+import ConnectWalletButton from '../components/ConnectWalletButton'
+import ChangeNetworkModal from '../components/Menu/GlobalSettings/ChangeNetworkModal'
 
 // This config is required for number formatting
 BigNumber.config({
@@ -133,7 +136,6 @@ const CustomMenu = styled.nav<{ isDark: boolean }>`
   height: 64px;
   display: flex;
   align-items: center;
-  justify-content: end;
   padding: 4px 10px;
   position: sticky;
   top: 0px;
@@ -172,11 +174,17 @@ const Burger = styled.div`
   padding: 2px;
   cursor: pointer;
 `
+
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const { pathname } = useRouter()
   const { active, chainId } = useWeb3React()
   const [isSide, setisSide] = useState(false)
+  const { t } = useTranslation()
   const [isDark, toggleTheme] = useThemeManager()
+  const [onPresent1] = useModal(<ChangeNetworkModal />)
+  function handleChangeNetworkModal() {
+    onPresent1()
+  }
   // Use the layout defined at the page level, if available
   const Layout = Component.Layout || Fragment
   return (
@@ -256,6 +264,10 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         />
         <ModifiedLayout>
           <CustomMenu isDark={isDark}>
+            <Button variant="primary" scale="md" mr="8px" onClick={onPresent1}>
+              Change Network
+            </Button>
+            <ConnectWalletButton />
             <CustomToggle>
               <Burger
                 onClick={() => {

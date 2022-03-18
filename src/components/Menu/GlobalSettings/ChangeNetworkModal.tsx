@@ -10,7 +10,7 @@ const Btn = styled(Button)`
   background-color: ${(props) => (props.active === true ? '#187a81' : ({ theme }) => theme.colors.primary)};
 `
 interface ExpertModalProps {
-  setshownetworkChangeModal: (boolean) => void
+  onDismiss: () => void
 }
 
 async function switchNetwork(network: any, setChainId: any) {
@@ -48,7 +48,7 @@ async function switchNetwork(network: any, setChainId: any) {
 }
 
 export { switchNetwork }
-const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeModal }) => {
+const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ onDismiss }) => {
   const { library, chainId, active } = useWeb3React()
   const { currentChainId, setChainId } = useContext(currentChainIdContext)
   const { t } = useTranslation()
@@ -56,8 +56,8 @@ const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeMo
   return (
     <Modal
       title={t('Change Network')}
-      onBack={() => setshownetworkChangeModal(false)}
-      onDismiss={() => setshownetworkChangeModal(false)}
+      onBack={onDismiss}
+      onDismiss={onDismiss}
       headerBackground="gradients.cardHeader"
       style={{ maxWidth: '360px' }}
     >
@@ -74,7 +74,7 @@ const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeMo
               // } else {
               setChainId(net.chainid)
               // }
-              setshownetworkChangeModal(false)
+              onDismiss()
             }}
             active={currentChainId === net.chainid ?? false}
           >
@@ -85,7 +85,7 @@ const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ setshownetworkChangeMo
       <Button
         variant="secondary"
         onClick={() => {
-          setshownetworkChangeModal(false)
+          onDismiss()
         }}
       >
         {t('Cancel')}
