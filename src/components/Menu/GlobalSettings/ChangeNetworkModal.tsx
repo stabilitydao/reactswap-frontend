@@ -9,8 +9,8 @@ import { networks, networkOrder } from '../../../config/constants/networks'
 const Btn = styled(Button)`
   background-color: ${(props) => (props.active === true ? '#187a81' : ({ theme }) => theme.colors.primary)};
 `
-interface ExpertModalProps {
-  onDismiss: () => void
+interface ChangeNetworkModalProps extends InjectedModalProps {
+  onDismiss?: () => void
 }
 
 async function switchNetwork(network: any, setChainId: any) {
@@ -48,7 +48,7 @@ async function switchNetwork(network: any, setChainId: any) {
 }
 
 export { switchNetwork }
-const ChangeNetworkModal: React.FC<ExpertModalProps> = ({ onDismiss }) => {
+const ChangeNetworkModal: React.FC<ChangeNetworkModalProps> = ({ onDismiss }) => {
   const { library, chainId, active } = useWeb3React()
   const { currentChainId, setChainId } = useContext(currentChainIdContext)
   const { t } = useTranslation()

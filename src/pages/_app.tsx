@@ -1,3 +1,5 @@
+import { currentChainIdContext } from 'contexts/chainId'
+import WrongNetworkWarning from 'components/WrongNetworkWarning'
 import { useRouter } from 'next/router'
 import { ResetCSS, Button, NotificationDot, Image, Toggle, Heading, Flex, useModal } from '@reactswap/uikit'
 import Script from 'next/script'
@@ -35,8 +37,8 @@ import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
 import ConnectWalletButton from '../components/ConnectWalletButton'
 import ChangeNetworkModal from '../components/Menu/GlobalSettings/ChangeNetworkModal'
-import WrongNetworkWarning from 'components/WrongNetworkWarning'
-import { currentChainIdContext } from 'contexts/chainId'
+
+
 
 // This config is required for number formatting
 BigNumber.config({

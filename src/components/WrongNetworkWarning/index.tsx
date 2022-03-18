@@ -53,7 +53,7 @@ const ConWrapper = styled(Container)`
 
 const WrongNetworkWarning: React.FC = () => {
   const { t } = useTranslation()
-  const { currentChainId, setChainId/* , setsync, sync */ } = useContext(currentChainIdContext)
+  const { currentChainId, setChainId /* , setsync, sync */ } = useContext(currentChainIdContext)
   const { isMobile, isMd } = useMatchBreakpoints()
   const net = networks[currentChainId]
   const warningText = t(`Please switch to ${net.name} Mainnet.`)
