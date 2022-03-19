@@ -10,8 +10,6 @@ import { FaExchangeAlt, FaHandHoldingWater } from 'react-icons/fa'
 import { GiFarmTractor, GiStakeHammer } from 'react-icons/gi'
 import BigNumber from 'bignumber.js'
 import { useThemeManager } from 'state/user/hooks'
-import GlobalSettings from '../components/Menu/GlobalSettings'
-import UserMenu from '../components/Menu/UserMenu'
 import EasterEgg from 'components/EasterEgg'
 import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
@@ -32,6 +30,8 @@ import { usePollBlockNumber } from 'state/block/hooks'
 import { usePollCoreFarmData } from 'state/farms/hooks'
 import { NextPage } from 'next'
 import { useFetchProfile } from 'state/profile/hooks'
+import GlobalSettings from '../components/Menu/GlobalSettings'
+import UserMenu from '../components/Menu/UserMenu'
 import { Blocklist, Updaters } from '..'
 import ErrorBoundary from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
@@ -295,6 +295,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
                     </Button>
                   )
                 }
+                return <div/>
               })}
 
             <GlobalSettings />
