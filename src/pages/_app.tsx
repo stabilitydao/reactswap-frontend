@@ -271,13 +271,34 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
             <WrongNetworkWarning />
           )}
           <CustomMenu isDark={isDark}>
-            {active && (
-              <Button variant="primary" scale="md" mr="8px" onClick={onPresent1}>
-                Change Network
-              </Button>
-            )}
+            {active &&
+              [
+                { name: 'ethereum', chainid: 1, image: 'ethereum.jpg' },
+                { name: 'ropsten', chainid: 3, image: 'ropsten.png' },
+                { name: 'polygon', chainid: 137, image: 'polygon.jpg' },
+              ].map(({ name, chainid, image }): any => {
+                const LogoIcon = () => {
+                  return (
+                    <img
+                      src={`/networks/${image}`}
+                      width={32}
+                      height={32}
+                      alt={name}
+                      style={{ borderRadius: '10px', margin: '10px' }}
+                    />
+                  )
+                }
+                if (chainid === chainId) {
+                  return (
+                    <Button startIcon={<LogoIcon />} variant="primary" scale="md" mr="8px" onClick={onPresent1}>
+                      {name}
+                    </Button>
+                  )
+                }
+              })}
+
             <GlobalSettings />
-            <UserMenu/>
+            <UserMenu />
             {!active && <ConnectWalletButton />}
             <CustomToggle>
               <Burger
