@@ -94,13 +94,13 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
     >
       <ScrollableContainer>
         <Flex pb="24px" flexDirection="column">
-          <Text bold textTransform="uppercase" fontSize="12px" color="secondary" mb="12px">
+          {/* <Text bold textTransform="uppercase" fontSize="12px" color="secondary" mb="12px">
             {t('Change Network')}
-          </Text>
-          <Button variant="secondary" width="100%" mb={12} onClick={handleChangeNetworkModal}>
+          </Text> */}
+          {/* <Button variant="secondary" width="100%" mb={12} onClick={handleChangeNetworkModal}>
             {t('Change network')}
-          </Button>
-          <Text bold textTransform="uppercase" fontSize="12px" color="secondary" mb="24px">
+          </Button> */}
+          <Text bold textTransform="uppercase" fontSize="12px" color="secondary" mb="12px">
             {t('Global')}
           </Text>
           <Flex justifyContent="space-between">
