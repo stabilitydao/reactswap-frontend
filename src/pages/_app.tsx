@@ -11,6 +11,7 @@ import { GiFarmTractor, GiStakeHammer } from 'react-icons/gi'
 import BigNumber from 'bignumber.js'
 import { useThemeManager } from 'state/user/hooks'
 import GlobalSettings from '../components/Menu/GlobalSettings'
+import UserMenu from '../components/Menu/UserMenu'
 import EasterEgg from 'components/EasterEgg'
 import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
@@ -275,7 +276,8 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
                 Change Network
               </Button>
             )}
-            <GlobalSettings/>
+            <GlobalSettings />
+            <UserMenu/>
             {!active && <ConnectWalletButton />}
             <CustomToggle>
               <Burger
