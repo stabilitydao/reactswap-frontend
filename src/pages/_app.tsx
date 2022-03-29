@@ -290,17 +290,16 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
                 }
                 if (chainid === chainId) {
                   return (
-                    <Button startIcon={<LogoIcon />} variant="primary" scale="md" mr="8px" onClick={onPresent1}>
+                    <Button startIcon={<LogoIcon />} variant="primary" scale="md" mr="auto" onClick={onPresent1}>
                       {name}
                     </Button>
                   )
                 }
-                return <div/>
+                return <div />
               })}
 
             <GlobalSettings />
             <UserMenu />
-            {!active && <ConnectWalletButton />}
             <CustomToggle>
               <Burger
                 onClick={() => {
